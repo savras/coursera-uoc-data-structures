@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://www.cplusplus.com/forum/articles/10627/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Headers and Includes:  Why and How - C++ Forum</title>
+<link rel="shortcut icon" type="image/x-icon" href="http://www.cplusplus.com/favicon.ico">
+<link rel="stylesheet" type="text/css" href="./Headers and Includes_ Why and How - C++ Forum_files/main.css">
+<script type="text/javascript" async="" src="./Headers and Includes_ Why and How - C++ Forum_files/ga.js.download"></script><script src="./Headers and Includes_ Why and How - C++ Forum_files/osd.js.download"></script><script src="./Headers and Includes_ Why and How - C++ Forum_files/expansion_embed.js.download"></script><script src="./Headers and Includes_ Why and How - C++ Forum_files/main.js.download" type="text/javascript"></script>
+<script>
+  (function() {
+    var useSSL = 'https:' == document.location.protocol;
+    var src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+    document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  })();
+</script><script src="./Headers and Includes_ Why and How - C++ Forum_files/gpt.js.download"></script><script id="gpt-impl-0.18660037812482777" src="./Headers and Includes_ Why and How - C++ Forum_files/pubads_impl_107.js.download"></script><link rel="prefetch" href="http://tpc.googlesyndication.com/safeframe/1-0-5/html/container.html">
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/32882001/L', [728, 90], 'div-gpt-ad-1473193443042-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.pubads().enableSyncRendering();
+    googletag.enableServices();
+  });
+</script>
+</head>
+<body>
+<div id="I_top">
+<div id="I_header">
+<div id="I_logo"><a href="http://www.cplusplus.com/" title="cplusplus.com"><div></div></a></div>
+<div id="I_search">
+<form id="search" action="http://www.cplusplus.com/search.do" method="get">
+Search: <input name="q" size="20" class="txt"> <input type="submit" value="Go" class="btn">
+</form>
+</div>
+<div id="I_bar">
+<ul>
+<li><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+<li><a href="http://www.cplusplus.com/forum/articles/">Articles</a></li>
+<li class="here">Headers and Includes:  Why and How</li>
+</ul>
+</div>
+<div id="I_user" class="C_LoginBox"><span title="ajax"></span><div id="I_corner" style="display: block;"><div id="I_cornerinner"><div id="I_userid">Not logged in</div></div></div><div id="I_userbuttons"><a href="http://www.cplusplus.com/user/access.cgi?w=signup">register</a><a id="I_btnlogin" href="javascript:LBI_user.modal(1)">log in</a></div><div id="I_fold" style="display: none;"><div class="deco"></div><form name="I_loginform" id="I_loginform" action="http://www.cplusplus.com/user/access.cgi" onsubmit="LBI_user.login(); return false;" method="post" style="display: none;"><div class="fields"><input type="hidden" name="w" value="login"><input type="hidden" name="y" value="1"><input type="hidden" name="to" value="http://www.cplusplus.com/forum/articles/10627/">user name: <input class="txt" name="l" size="8" type="text" title="Type user name"><br>password: <input class="txt" name="p" size="8" type="password" title="Type password"><br><input class="chk" name="rememberme" id="rememberme" value="1" type="checkbox"><label for="rememberme">remember me</label>&nbsp;<input class="btn" value="sign in" type="submit"><br><div class="forgot"><a href="http://www.cplusplus.com/user/access.cgi?w=lostpass">forgot your password?</a></div></div><div class="openid">or sign in using:<br><a class="google" href="http://www.cplusplus.com/user/access.cgi?w=login&amp;y=1&amp;pr=google&amp;to=%2Fforum%2Farticles%2F10627%2F" title="Sign in using your google account"><span></span></a><a class="yahoo" href="http://www.cplusplus.com/user/access.cgi?w=login&amp;y=1&amp;pr=yahoo&amp;to=%2Fforum%2Farticles%2F10627%2F" title="Sign in using your Yahoo! account"><span></span></a> </div></form><div id="I_loginwait" style="display: none;"></div><div id="I_loginfail" style="display: none;"><div id="I_loginfailtext"></div><a class="C_bRepeat" href="javascript:LBI_user.modal(1)">try again</a><a class="C_bCancel" href="javascript:LBI_user.modal(0)">cancel</a><div class="forgot"><a href="http://www.cplusplus.com/user/access.cgi?w=lostpass">forgot your password?</a></div></div><div class="close"><a href="javascript:LBI_user.modal(0)" title="cancel log in"><span></span></a></div></div></div>
+</div>
+</div>
+<div id="I_mid">
+<div id="I_wrap">
+<div id="I_minheight" style="height: 472px;"></div>
+<div id="I_main">
+<div class="C_support">
+<div id="div-gpt-ad-1473193443042-0" style="height:90px; width:728px;" data-google-query-id="CIDbsLy2w9ECFUI4lgodOsUJyA">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1473193443042-0'); });
+</script><script type="text/javascript" src="./Headers and Includes_ Why and How - C++ Forum_files/ads" id="sae-script-1"></script><div id="google_ads_iframe_/32882001/L_0__container__" style="display: inline-block; width: 728px; height: 90px;"><iframe frameborder="0" src="./Headers and Includes_ Why and How - C++ Forum_files/container.html" id="google_ads_iframe_/32882001/L_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" width="728" height="90" data-is-safeframe="true" style="border: 0px; vertical-align: bottom;"></iframe></div>
+</div>
+</div>
+<div id="I_content">
+<h3><div class="C_ico default" title="post">&nbsp;</div> Headers and Includes:  Why and How</h3><span id="CH_edttl"></span><div class="C_pages">Pages: <span title="Current page">1</span><a href="http://www.cplusplus.com/forum/articles/10627/2/">2</a></div><span class="rootdatPost" title="10627,root,0,-1,26,0"></span><div id="CH_PostList"><div class="C_forPost" id="msg49678"><span title="49678,18360,1023,13766,1"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49678" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm7350b9d4ab" title="Sat, 02 May 2009 15:12:20 +0000">May 2, 2009 at 11:12pm</span><script type="text/javascript">WhenId('CH_zTm7350b9d4ab');</script><noscript>May 2, 2009 at 3:12pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49678">
+<tt>*************************************************<br>
+**  0)  Introduction                           **<br>
+*************************************************</tt><br>
+<br>
+This article is meant to address a common newbie problem regarding failure to understand #include, headers, and source file interaction.  Several good practices are outlined and explained to show how to avoid some ugly snags.  Later sections get into more advanced topics (inlining and templates), so even C++ coders with some experience under their belt might benefit from a read!<br>
+<br>
+If you are already familiar with the basics, feel free to skip ahead to section 4.  That is where practices and design strategies are discussed.<br>
+<br>
+<tt>*************************************************<br>
+**  1)  Why we need header files.              **<br>
+*************************************************</tt><br>
+<br>
+If you're just starting out in C++, you might be wondering why you need to #include files and why you would want to have multiple .cpp files for a program.  The reasons for this are simple:<br>
+<br>
+<b>(1)</b>  It speeds up compile time.  As your program grows, so does your code, and if everything is in a single file, then everything must be fully recompiled every time you make any little change.  This might not seem like a big deal for small programs (and it isn't), but when you have a reasonable size project, compile times can take <i>several minutes</i> to compile the entire program.  Can you imagine having to wait that long between every minor change?<br>
+<br>
+Compile / wait 8 minutes / "oh crap, forgot a semicolon" / compile / wait 8 minutes / debug / compile / wait 8 minutes / etc<br>
+<br>
+<b>(2)</b>  It keeps your code more organized.  If you seperate concepts into specific files, it's easier to find the code you are looking for when you want to make modifications (or just look at it to remember how to use it and/or how it works).<br>
+<br>
+<b>(3)</b>  It allows you to separate <i>interface</i> from <i>implementation</i>.  If you don't understand what that means, don't worry, we'll see it in action throughout this article.<br>
+<br>
+<br>
+Those are the upsides, but the big, obvious downside is that is makes things a little more complicated if you don't understand how it all works (in reality, though, it's simpler than the alternatives as the project gets larger)<br>
+<br>
+C++ programs are built in a two stage process.  First, each source file is <i>compiled</i> on its own.  The compiler generates intermediate files for each compiled source file.  These intermediate files are often called <i>object files</i> -- but they are not to be confused with objects in your code.  Once all the files have been individually compiled, it then <i>links</i> all the object files together, which generates the final binary (the program).<br>
+<br>
+This means that <i>each source file is compiled separately</i> from other source files.  As a result of this, in terms of compiling, "a.cpp" is clueless as to what's going on inside of "b.cpp".  Here's a quick example to illustrate:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br></code></pre></td>
+<td class="source"><pre><code><cite>// in myclass.cpp</cite>
+
+<var>class</var> MyClass
+{
+<var>public</var>:
+  <var>void</var> foo();
+  <var>int</var> bar;
+};
+
+<var>void</var> MyClass::foo()
+{
+  <cite>// do stuff</cite>
+}</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br></code></pre></td>
+<td class="source"><pre><code><cite>// in main.cpp</cite>
+
+<var>int</var> main()
+{
+  MyClass a; <cite>// Compiler error: 'MyClass' is unidentified</cite>
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"><div class="C_shell"><div class="inner"><div class="btn trans_half" style="width: 16px; background-color: rgb(255, 255, 255);"><a href="http://www.cplusplus.com/forum/articles/10627/#" title="Open C++ Shell (in a new window)" target="_top"><span class="C_ico settings"></span> Edit &amp; Run</a></div></div></div></td></tr></tbody></table></div>
+<br>
+<br>
+Even though MyClass is declared <i>in your program</i>, it is not declared <i>in main.cpp</i>, and therefore when you compile main.cpp you get that error.<br>
+<br>
+This is where header files come in.  Header files allow you to make the <i>interface</i> (in this case, the class MyClass) visible to other .cpp files, while keeping the <i>implementation</i> (in this case, MyClass's member function bodies) in its own .cpp file.  That same example again, but tweaked slightly:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><cite>// in myclass.h</cite>
+
+<var>class</var> MyClass
+{
+<var>public</var>:
+  <var>void</var> foo();
+  <var>int</var> bar;
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br></code></pre></td>
+<td class="source"><pre><code><cite>// in myclass.cpp</cite>
+<dfn>#include "myclass.h"</dfn>
+
+<var>void</var> MyClass::foo()
+{
+}</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><cite>//in main.cpp</cite>
+<dfn>#include "myclass.h"  </dfn><cite>// defines MyClass</cite>
+
+<var>int</var> main()
+{
+  MyClass a; <cite>// no longer produces an error, because MyClass is defined</cite>
+  <var>return</var> 0;
+}</code></pre></td><td class="C_btnholder"><div class="C_shell"><div class="inner"><div class="btn trans_half"><a href="http://www.cplusplus.com/forum/articles/10627/#" title="Open C++ Shell (in a new window)" target="_top"><span class="C_ico settings"></span> Edit &amp; Run</a></div></div></div></td></tr></tbody></table></div>
+<br>
+<br>
+The #include statement is basically like a copy/paste operation.  The compiler will "replace" the #include line with the actual contents of the file you're including when it compiles the file.<br>
+<br>
+<tt>***************************************************************<br>
+**  2)  What is the difference between .h/.cpp/.hpp/.cc/etc  **<br>
+***************************************************************</tt><br>
+<br>
+All files are fundamentally the same in that they're all text files, however different kinds of files should have different extensions:<br>
+<br>
+- <i>Header files</i> should use a .h__ extension (.h / .hpp / .hxx).  Which of those you use doesn't matter.<br>
+- <i>C++ Source files</i> should use a .c__ extention (.cpp / .cxx / .cc).  Which of those you use doesn't matter.<br>
+- <i>C Source files</i> should use .c (.c only).<br>
+<br>
+The reason C and C++ source files are seperated here is because it makes a difference in some compilers.  In all likelyhood (since you're reading this on a C++ site), you'll be using C++ code, so refrain from using the .c extension.  Also, files with header extensions might be ignored by the compiler if you try to compile them.<br>
+<br>
+So what's the difference between Header files and Source files?  Basically, header files are #included and not compiled, whereas source files are compiled and not #included.  You can try to side-step these conventions and make a file with a source extension behave like a header or vice-versa, but you shouldn't.  I won't list the many reasons why you shouldn't (other than the few I already have) -- just don't.<br>
+<br>
+The one exception is that it is sometimes (although <i>very rarely</i>) useful to include a source file.  This scenario has to do with instantiating templates and is outside the scope of this article.  For now... just put it in your brain:  <i>"do not #include source files"</i>
+</div>
+<div class="dhow">
+<span class="sedited">Last edited on <span id="CH_zTmcc419df4cb" title="Sat, 02 May 2009 17:38:03 +0000">May 3, 2009 at 1:38am</span><script type="text/javascript">WhenId('CH_zTmcc419df4cb');</script><noscript>May 2, 2009 at 5:38pm UTC</noscript></span>
+<span class="dbtn" id="CH_btn49678"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49679"><span title="49679,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49679" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm386d44a276" title="Sat, 02 May 2009 15:13:48 +0000">May 2, 2009 at 11:13pm</span><script type="text/javascript">WhenId('CH_zTm386d44a276');</script><noscript>May 2, 2009 at 3:13pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49679">
+<tt>*****************************************************<br>
+**  3)  Include guards                             **<br>
+*****************************************************</tt><br>
+<br>
+C++ compilers do not have brains of their own, and so they will do exactly what you tell them to.  If you tell them to include the same file more than once, then that is exactly what they will do.  And if you don't handle it properly, you'll get some crazy errors as a result:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br></code></pre></td>
+<td class="source"><pre><code><cite>// myclass.h</cite>
+
+<var>class</var> MyClass
+{
+  <var>void</var> DoSomething() { }
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br></code></pre></td>
+<td class="source"><pre><code><cite>// main.cpp</cite>
+<dfn>#include "myclass.h"   </dfn><cite>// define MyClass</cite>
+<dfn>#include "myclass.h"   </dfn><cite>// Compiler error - MyClass already defined </cite></code></pre></td><td class="C_btnholder"><div class="C_shell"><div class="inner"><div class="btn trans_half"><a href="http://www.cplusplus.com/forum/articles/10627/#" title="Open C++ Shell (in a new window)" target="_top"><span class="C_ico settings"></span> Edit &amp; Run</a></div></div></div></td></tr></tbody></table></div>
+<br>
+<br>
+Now you might be saying to yourself "well that's stupid, why would I include the same file twice?"  Believe it or not, it will happen a lot.  Not quite as illustrated above, though.  Usually it happens when you include two files that each include the same file.  Example:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code><cite>// x.h</cite>
+<var>class</var> X { };</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><cite>// a.h</cite>
+<dfn>#include "x.h"</dfn>
+
+<var>class</var> A { X x; };</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><cite>// b.h</cite>
+<dfn>#include "x.h"</dfn>
+
+<var>class</var> B { X x; };</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><cite>// main.cpp</cite>
+
+<dfn>#include "a.h"  </dfn><cite>// also includes "x.h"</cite>
+<dfn>#include "b.h"  </dfn><cite>// includes x.h again!  ERROR </cite></code></pre></td><td class="C_btnholder"><div class="C_shell"><div class="inner"><div class="btn trans_half"><a href="http://www.cplusplus.com/forum/articles/10627/#" title="Open C++ Shell (in a new window)" target="_top"><span class="C_ico settings"></span> Edit &amp; Run</a></div></div></div></td></tr></tbody></table></div>
+<br>
+<br>
+Because of this scenario, many people are told not to put #include in header files.  However <i>this is bad advice and you should not listen to it</i>.  Sadly, some people are actually <i>taught</i> this in C++ courses that they are <i>paying money for</i>.  If your C++ instructor tells you not to #include in header files, then [grudgingly] follow his instructions in order to pass the course, but once you're out of his/her class, shake that habit.<br>
+<br>
+The truth is there is nothing wrong with putting #include in header files -- and in fact it is very benefitial.  <i>Provided you take two precautions</i>:<br>
+<br>
+1)  Only #include things you <i>need</i> to include (covered next section)<br>
+2)  Guard against incidental multiple includes with include guards.<br>
+<br>
+An Include Guard is a technique which uses a unique identifier that you #define at the top of the file.  Here's an example:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><cite>//x.h</cite>
+
+<dfn>#ifndef __X_H_INCLUDED__   </dfn><cite>// if x.h hasn't been included yet...</cite>
+<dfn>#define __X_H_INCLUDED__   </dfn><cite>//   #define this so the compiler knows it has been included</cite>
+
+<var>class</var> X { };
+
+<dfn>#endif </dfn></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+This works by skipping over the entire header if it was already included.  __X_H_INCLUDED__ is #defined the first time x.h is included -- and if x.h is included a second time, the compiler will skip over the header because the #ifndef check will fail.<br>
+<br>
+<i>Always</i> guard your headers.  Always always always.  It doesn't hurt anything to do it, and it will save you some headaches.  For the rest of this article, it is assumed all header files are include guarded (even if I don't explicitly put it in the example).<br>
+<br>
+You do not need to guard your .cpp files, because they are not #included (Or at least they shouldn't be... right?  <i>RIGHT?</i>)<br>
+<br>
+<tt>*****************************************************<br>
+**  4)  The "right way" to include                 **<br>
+*****************************************************</tt><br>
+<br>
+Classes you create will often have dependencies on other classes.  A derived class, for example, will always be dependent on its parent, because in order to be derived from the parent, it must be aware of its parent at compile time.<br>
+<br>
+There are two basic kinds of dependencies you need to be aware of:<br>
+1)  stuff that can be forward declared<br>
+2)  stuff that needs to be #included<br>
+<br>
+If, for example, class A uses class B, then class B is one of class A's dependencies.  Whether it can be forward declared or needs to be included depends on how B is used within A:<br>
+<br>
+<tt><br>
+- do nothing if:         A makes no references at all to B<br>
+- do nothing if:         The only reference to B is in a friend declaration<br>
+- forward declare B if:  A contains a B pointer or reference:  B* myb;<br>
+- forward declare B if:  one or more functions has a B object/pointer/reference<br>
+                           as a parementer, or as a return type:  B MyFunction(B myb);<br>
+- #include "b.h" if:     B is a parent class of A<br>
+- #include "b.h" if:     A contains a B object:   B  myb;<br>
+</tt><br>
+<br>
+You want to do the least drastic option possible.  Do nothing if you can, but if you can't, forward declare if you can.  But if it's necessary, then #include the other header.<br>
+<br>
+Ideally, the dependencies for the class should be layed out in the header.  Here is a typical outline of how a "right way" header might look:<br>
+<br>
+myclass.h<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br></code></pre></td>
+<td class="source"><pre><code><cite>//=================================</cite>
+<cite>// include guard</cite>
+<dfn>#ifndef __MYCLASS_H_INCLUDED__</dfn>
+<dfn>#define __MYCLASS_H_INCLUDED__</dfn>
+
+<cite>//=================================</cite>
+<cite>// forward declared dependencies</cite>
+<var>class</var> Foo;
+<var>class</var> Bar;
+
+<cite>//=================================</cite>
+<cite>// included dependencies</cite>
+<dfn>#include &lt;vector&gt;</dfn>
+<dfn>#include "parent.h"</dfn>
+
+<cite>//=================================</cite>
+<cite>// the actual class</cite>
+<var>class</var> MyClass : <var>public</var> Parent  <cite>// Parent object, so #include "parent.h"</cite>
+{
+<var>public</var>:
+  std::vector&lt;<var>int</var>&gt; avector;    <cite>// vector object, so #include &lt;vector&gt;</cite>
+  Foo* foo;                    <cite>// Foo pointer, so forward declare Foo</cite>
+  <var>void</var> Func(Bar&amp; bar);         <cite>// Bar reference, so forward declare Bar</cite>
+
+  <var>friend</var> <var>class</var> MyFriend;       <cite>// friend declaration is not a dependency</cite>
+                               <cite>//   don't do anything about MyFriend</cite>
+};
+
+<dfn>#endif </dfn><cite>// __MYCLASS_H_INCLUDED__ </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+This shows the two different kinds of dependencies and how to handle them.  Because MyClass only uses a pointer to Foo and not a full Foo object, we can forward declare Foo, and don't need to #include "foo.h".  <i>You should always forward declare what you can -- don't #include unless it's necessary</i>.  Unnecessary #includes can lead to trouble.<br>
+<br>
+If you stick to this system, you will bulletproof yourself, and will minimize #include related hazards.<br>
+
+</div>
+<div class="dhow">
+<span class="sedited">Last edited on <span id="CH_zTm8184fa1de9" title="Sat, 02 May 2009 17:42:51 +0000">May 3, 2009 at 1:42am</span><script type="text/javascript">WhenId('CH_zTm8184fa1de9');</script><noscript>May 2, 2009 at 5:42pm UTC</noscript></span>
+<span class="dbtn" id="CH_btn49679"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49680"><span title="49680,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49680" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm2e6162113f" title="Sat, 02 May 2009 15:14:37 +0000">May 2, 2009 at 11:14pm</span><script type="text/javascript">WhenId('CH_zTm2e6162113f');</script><noscript>May 2, 2009 at 3:14pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49680">
+<tt>*****************************************************<br>
+**  5)  Why that is the "right way" to include     **<br>
+*****************************************************</tt><br>
+<br>
+Note:  in this section I refer to the "right way" method outlined above as "mine".  While I did come up with it on my own (after struggling through the mucky muck for a while) -- I can't say I was the first person who ever thought of it, so it isn't really "mine".  But for purposes of this article, I call it "mine" for simplicity.<br>
+<br>
+You:  "So-and-so says that #including in a header is dangerous, but you say it's not!  Why is your way so much better than what so-and-so says?"<br>
+<br>
+So-and-so is partially right, but is explaining it wrong.  Frivilous and careless #includes <i>can</i> lead to trouble.  And one way to avoid those troubles <i>is</i> to never #include inside a header file.  So yeah, so-and-so's heart is in the right place.  But ultimately, using so-and-so's approach is going to give yourself TONS of additional work and headaches.<br>
+<br>
+The concept I'm illustrating is very OO, and enhances encapsulation.  The general idea is that it makes "myclass.h" fully self-contained and doesn't require any other area of the program (other than MyClass's implementation/source file) to know how MyClass works internally.  If some other class needs to use MyClass, it can just #include "myclass.h" and be done with it!<br>
+<br>
+The alternative (so-and-so's method), would require you to #include all of MyClass's dependencies <i>before</i> #including "myclass.h", since myclass.h can't include its dependencies itself.  This is headache city, because now using a class isn't so straightforward.<br>
+<br>
+Here is an example of why my method is good:<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br></code></pre></td>
+<td class="source"><pre><code><cite>//example.cpp</cite>
+
+<cite>//  I want to use MyClass</cite>
+<dfn>#include "myclass.h"   </dfn><cite>// will always work, no matter what MyClass looks like.</cite>
+                       <cite>// You're done</cite>
+               <cite>//  (provided myclass.h follows my outline above and does</cite>
+               <cite>//   not make unnecessary #includes) </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+Here is an example of why so-and-so's method is bad:<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br></code></pre></td>
+<td class="source"><pre><code><cite>//example.cpp</cite>
+
+<cite>//  I want to use MyClass</cite>
+<dfn>#include "myclass.h"</dfn>
+   <cite>// ERROR 'Parent' undefined </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+so-and-so:  "Hrm... okay...."<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br></code></pre></td>
+<td class="source"><pre><code><dfn>#include "parent.h"</dfn>
+<dfn>#include "myclass.h"</dfn>
+   <cite>// ERROR 'std::vector' undefined </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><dfn>#include "parent.h"</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+<dfn>#include "myclass.h"</dfn>
+   <cite>// ERROR 'Support' undefined </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+so-and-so:  "WTF?  MyClass doesn't even <i>use</i> Support!  But alright..."<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br></code></pre></td>
+<td class="source"><pre><code><dfn>#include "parent.h"</dfn>
+<dfn>#include &lt;vector&gt;</dfn>
+<dfn>#include "support.h"</dfn>
+<dfn>#include "myclass.h"</dfn>
+   <cite>// ERROR 'Support' undefined </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+so-and-so:  "Give me a break!  I'm including it!  What else do you want!"<br>
+<br>
+Believe it or not, the above <i>does</i> happen.  Little did poor so-and-so know, but "parent.h" uses Support, and therefore you must #include "support.h" <i>before</i> "parent.h".<br>
+<br>
+And what happens if support.h needs something else?  What if <i>that something else</i> needs something else?  We're already up to 4 #includes just to use a single class!  With so-and-so's method, not only do you have to remember which includes are needed for each class, but also <i>the order in which you need to #include them</i>.  This becomes a <i>huge</i> nightmare <i>very</i> quickly.<br>
+<br>
+And what happens if you want to tweak MyClass?  Let's say you decide that it would be better to use std::list instead of std::vector.  With so-and-so's method, you now have to go back and change <i>every single file</i> that #includes "myclass.h" and change it to include &lt;list&gt; instead of &lt;vector&gt; (which might be dozens of files depending on the size of the project and how often MyClass is used), whereas with my method you only have to change "myclass.h", and maybe "myclass.cpp".<br>
+<br>
+The "right way" I illustrated above is all about encapsulation.  Files that want to use MyClass don't need to be aware of what MyClass uses in order for it to work, and don't need to #include any MyClass dependencies.  All you need to do to get MyClass to work is #include "myclass.h".  Period.  The header file is set up to be completely self contained.  It's all very OO friendly, very easy to use, and very easy to maintain.<br>
+<br>
+<tt>*****************************************************<br>
+**  6)  Circular Dependencies                      **<br>
+*****************************************************</tt><br>
+<br>
+A circular dependency is when two (or more) classes depend on each other.  For example, class A depends on class B, and class B depends on class A.  <i>If you stick to "the right way"</i> and forward declare when you can instead of #including needlessly, this usually isn't a problem.  As long as the circle is broken with a forward declaration at some point, you're fine.<br>
+<br>
+Here's the perfect example of why you should only #include what is necessary:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><cite>// a.h -- assume it's guarded</cite>
+<dfn>#include "b.h"</dfn>
+
+<var>class</var> A { B* b; };</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><cite>// b.h -- assume it's guarded</cite>
+<dfn>#include "a.h"</dfn>
+
+<var>class</var> B { A* a };</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+An initial glance might see nothing wrong with this.  B is a dependency of A, so you include it, and A is a dependency of B, so you include it.  So what's wrong with this?<br>
+<br>
+This is a circular inclusion (also called an infinite inclusion) and is the result of one or more includes that shouldn't be there.  Say for example you compile "a.cpp":<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code><cite>// a.cpp</cite>
+<dfn>#include "a.h" </dfn></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+The compiler will do the following:<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></code></pre></td>
+<td class="source"><pre><code><dfn>#include "a.h"</dfn>
+
+   <cite>// start compiling a.h</cite>
+   <dfn>#include "b.h"</dfn>
+
+      <cite>// start compiling b.h</cite>
+      <dfn>#include "a.h"</dfn>
+
+         <cite>// compilation of a.h skipped because it's guarded</cite>
+
+      <cite>// resume compiling b.h</cite>
+      <var>class</var> B { A* a };        <cite>// &lt;--- ERROR, A is undeclared </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+Even though you're #including "a.h", the compiler is not seeing the A class until after the B class gets compiled.  This is because of the circular inclusion problem.  This is why you should <i>always forward declare</i> when you're only using a pointer or reference.  Here, "a.h" should not be #including b.h, but instead should just be forward declaring B.  Likwise, b.h should be forward declaring A.  If you make those changes, the problem is solved.<br>
+<br>
+The circular inclusion problem may persist if both dependencies are #include dependencies (ie:  they can't be forward declared).  Here's an example:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><cite>// a.h (guarded)</cite>
+
+<dfn>#include "b.h"</dfn>
+
+<var>class</var> A
+{
+  B b;   <cite>// B is an object, can't be forward declared</cite>
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br></code></pre></td>
+<td class="source"><pre><code><cite>// b.h (guarded)</cite>
+
+<dfn>#include "a.h"</dfn>
+
+<var>class</var> B
+{
+  A a;   <cite>// A is an object, can't be forward declared</cite>
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+You may note, however, that this situation is <i>conceptually impossible</i>.  There is a fundamental design flaw.  If A has a B object, and B has an A object, then A contains a B, which contains another A, which contains another B, which contains another A, which contains another B, etc, etc.  You have an infinite recursion problem, and either class is simply impossible to instantiate. The solution is to have one or both classes contain a <i>pointer or reference</i> to the other, rather than a full object.  Then you can forward declare, and then you can get around the circular inclusion problem.<br>
+
+</div>
+<div class="dhow">
+<span class="sedited">Last edited on <span id="CH_zTmc9f94dc7aa" title="Sat, 02 May 2009 17:40:32 +0000">May 3, 2009 at 1:40am</span><script type="text/javascript">WhenId('CH_zTmc9f94dc7aa');</script><noscript>May 2, 2009 at 5:40pm UTC</noscript></span>
+<span class="dbtn" id="CH_btn49680"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49682"><span title="49682,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49682" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm17aa9c3e0a" title="Sat, 02 May 2009 15:15:15 +0000">May 2, 2009 at 11:15pm</span><script type="text/javascript">WhenId('CH_zTm17aa9c3e0a');</script><noscript>May 2, 2009 at 3:15pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49682">
+<tt>*****************************************************<br>
+**  7)  Function inlining                          **<br>
+*****************************************************</tt><br>
+<br>
+The catch-22 with inline functions is that their function body needs to exist in every cpp file which calls them, otherwise you get linker errors (since they can't be linked during the linker process -- they need to be compiled into the code during the compiler process).<br>
+<br>
+This might open circular reference holes or other scenarios that might complicate the "right way" outline.<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><var>class</var> B
+{
+<var>public</var>:
+  <var>void</var> Func(<var>const</var> A&amp; a)   <cite>// parameter, so forward declare is okay</cite>
+  {
+    a.DoSomething();      <cite>// but now that we've dereferenced it, it</cite>
+                          <cite>//  becomes an #include dependency</cite>
+               <cite>// = we now have a potential circular inclusion</cite>
+  }
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+The key is that while inline function need to exist in the header, they <i>do not</i> need to exist in the class definition itself.  This lets us exploit a loophole:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br></code></pre></td>
+<td class="source"><pre><code><cite>// b.h  (assume its guarded)</cite>
+
+<cite>//------------------</cite>
+<var>class</var> A;  <cite>// forward declared dependency</cite>
+
+<cite>//------------------</cite>
+<var>class</var> B
+{
+<var>public</var>:
+  <var>void</var> Func(<var>const</var> A&amp; a);  <cite>// okay, A is forward declared</cite>
+};
+
+<cite>//------------------</cite>
+<dfn>#include "a.h"        </dfn><cite>// A is now an include dependency</cite>
+
+<var>inline</var> <var>void</var> B::Func(<var>const</var> A&amp; a)
+{
+  a.DoSomething();    <cite>// okay!  a.h has been included</cite>
+}</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+While you might not think so at first glance... this is <i>perfectly safe</i>.  The circular inclusion problem is avoided completely, even if a.h includes b.h.  This is because the additional #includes don't come up until AFTER class B is fully defined, and they are therefore harmless.<br>
+<br>
+You:  "But putting function bodies at the end of my header is ugly.  Isn't there a way to avoid that?"<br>
+<br>
+Me:  Yep!  Just move the function bodies to another header:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br></code></pre></td>
+<td class="source"><pre><code><cite>// b.h</cite>
+
+    <cite>// blah blah</cite>
+
+<var>class</var> B { <cite>/* blah blah */</cite> };
+
+<dfn>#include "b_inline.h"  </dfn><cite>// or I sometimes use "b.hpp" </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// b_inline.h (or b.hpp -- whatever)</cite>
+
+<dfn>#include "a.h"</dfn>
+<dfn>#include "b.h"  </dfn><cite>// not necessary, but harmless</cite>
+                <cite>//  you can do this to make this "feel" like a source</cite>
+                <cite>//  file, even though it isn't</cite>
+
+<var>inline</var> <var>void</var> B::Func(<var>const</var> A&amp; a)
+{
+  a.DoSomething();
+}</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+This seperates the interface from the implementation, while still allowing the implementation to be inlined.  You can also have a normal "b.cpp" file for the implementation that isn't inlined.<br>
+<br>
+<tt>*****************************************************<br>
+** 8) Forward declaring templates                  **<br>
+*****************************************************</tt><br>
+<br>
+Forward declaring is pretty straight-forward when it comes to simple classes, but when dealing with template classes, things aren't so simple.  Consider the following scenario:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br></code></pre></td>
+<td class="source"><pre><code><cite>// a.h</cite>
+
+<cite>// included dependencies</cite>
+<dfn>#include "b.h"</dfn>
+
+<cite>// the class template</cite>
+<var>template</var> &lt;<var>typename</var> T&gt;
+<var>class</var> Tem
+{
+ <cite>/*...*/</cite>
+  B b;
+};
+
+<cite>// class most commonly used with 'int'</cite>
+<var>typedef</var> Tem&lt;<var>int</var>&gt; A;  <cite>// typedef'd as 'A' </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// b.h</cite>
+
+<cite>// forward declared dependencies</cite>
+<var>class</var> A;  <cite>// error!</cite>
+
+<cite>// the class</cite>
+<var>class</var> B
+{
+ <cite>/* ... */</cite>
+  A* ptr;
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+While this seems perfectly logical, it doesn't work!  (Although, logically you really think it should.  This is an irritation of the language).  Because 'A' isn't really a class, but rather a typedef, the compiler will bark at you.  Also notice that we can't just #include "a.h" here because of a circular dependency problem.<br>
+<br>
+In order to forward declare 'A', we need to typedef it.  Which means we need to forward declare what it's typedef'd as.  The way to forward declare it is like so:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br></code></pre></td>
+<td class="source"><pre><code><var>template</var> &lt;<var>typename</var> T&gt; <var>class</var> Tem;  <cite>// forward declare our template</cite>
+<var>typedef</var> Tem&lt;<var>int</var>&gt; A;               <cite>// then typedef 'A' </cite></code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+This is quite a bit uglier than <span class="auto"><code class="source"><var>class</var> A;</code></span>, but nonetheless is a necessary evil.  This, however, makes templated classes hard to encapsulate, because it requires every class which forward declares them to know exactly how the template is layed out.  If that ever changes you have a big mess to clean up.<br>
+<br>
+A practical solution to this problem is to create an alternative header which has the forward declarations of your templated classes and their typedefs.  Here's a more elegant way to approach the above example:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br></code></pre></td>
+<td class="source"><pre><code><cite>//a.h</cite>
+
+<dfn>#include "b.h"</dfn>
+
+<var>template</var> &lt;<var>typename</var> T&gt;
+<var>class</var> Tem
+{
+ <cite>/*...*/</cite>
+  B b;
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br></code></pre></td>
+<td class="source"><pre><code><cite>//a_fwd.h</cite>
+
+<var>template</var> &lt;<var>typename</var> T&gt; <var>class</var> Tem;
+<var>typedef</var> Tem&lt;<var>int</var>&gt; A;</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br></code></pre></td>
+<td class="source"><pre><code><cite>//b.h</cite>
+
+<dfn>#include "a_fwd.h"</dfn>
+
+<var>class</var> B
+{
+ <cite>/*...*/</cite>
+  A* ptr;
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+This allows B to include a header which forward declares A without including the entire class definition.
+</div>
+<div class="dhow">
+<span class="sedited">Last edited on <span id="CH_zTm65287183d3" title="Mon, 15 Jun 2009 10:59:07 +0000">Jun 15, 2009 at 6:59pm</span><script type="text/javascript">WhenId('CH_zTm65287183d3');</script><noscript>Jun 15, 2009 at 10:59am UTC</noscript></span>
+<span class="dbtn" id="CH_btn49682"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49702"><span title="49702,13171,1023,13353,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49702" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm98b5b7cde8" title="Sat, 02 May 2009 16:22:21 +0000">May 3, 2009 at 12:22am</span><script type="text/javascript">WhenId('CH_zTm98b5b7cde8');</script><noscript>May 2, 2009 at 4:22pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/helios/"><b>helios</b> (13353)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49702">
+You should mention that only files that match source code patterns (*.c, *.cpp, *.cc, *.C, *.cxx, etc) are compiled, even if other files are passed to the compiler. For example, if you use the command line<br>
+<tt>g++ main.cpp file.c file.h</tt><br>
+Only main.cpp and file.cpp will be compiled. A side effect of this is that header extensions are arbitrary.<br>
+Also mention that the compiler to use is inferred from the extension, except when the compiler is explicitly told to compile something as C or C++.<br>
+<br>
+About section 7, are you sure forward declaration doesn't work when passing parameters by value, yet it works when passing pointers/references and manually making copies?<br>
+<br>
+Finally, about templates, I'd say it's better practice to put the template definition in the class declaration. Particularly if there are non-template methods in the class.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49702"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49713"><span title="49713,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49713" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm453e68911c" title="Sat, 02 May 2009 16:56:15 +0000">May 3, 2009 at 12:56am</span><script type="text/javascript">WhenId('CH_zTm453e68911c');</script><noscript>May 2, 2009 at 4:56pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49713">
+<table class="quote"><tbody><tr><td class="qd">g++ main.cpp file.c file.h<br>
+Only main.cpp and file.cpp will be compiled. A side effect of this is that header extensions are arbitrary.</td></tr></tbody></table><br>
+<br>
+I wasn't sure that was the case.  iirc, you <i>could</i> compile headers in VS.  I haven't tried it since i switched to CodeBlocks+GCC.  But that's a valid point.<br>
+<br>
+<table class="quote"><tbody><tr><td class="qd">About section 7</td></tr></tbody></table><br>
+<br>
+Oh crap!  That's what i get for not testing enough.  You're totally right, forward declaring works fine.  Only problem happens if its implicitly inlined, but that's another matter.<br>
+<br>
+<table class="quote"><tbody><tr><td class="qd">Finally, about templates, I'd say it's better practice to put the template definition in the class declaration.</td></tr></tbody></table><br>
+<br>
+Well -- I'm not a big fan of putting implementation in the class itself (unless it's a really small get() function or some other kind of 1-liner).  I guess with templates it's alright because any dependencies can be forward declared and included after the class body (at least I think so, I'd have to actually test that).<br>
+<br>
+There are other considerations, too, though.  Like if the template class is exceedingly large and you want to ease compile time (though it would have to be pretty freaking big to make a difference)<br>
+<br>
+Anyway overall I agree.  I just included that bit out of completeness.  I figured I should focus more on the instantiating method since everybody knows how to do the inlining method.  But really -- the more I think about it, the more I think that should belong in another article (like one specifically talking about templates).<br>
+<br>
+In response to that, I've decided to cut sections 7 and 9 completely, and touch up a few related things.  I'll edit the posts once I get it straightened out on my local copy.<br>
+<br>
+<br>
+Thanks for the feedback!
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49713"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49714"><span title="49714,13171,1023,13353,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49714" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTmcb8cfddc5d" title="Sat, 02 May 2009 17:21:46 +0000">May 3, 2009 at 1:21am</span><script type="text/javascript">WhenId('CH_zTmcb8cfddc5d');</script><noscript>May 2, 2009 at 5:21pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/helios/"><b>helios</b> (13353)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49714">
+Visual C++ doesn't compile headers, either.
+</div>
+<div class="dhow">
+<span class="sedited">Last edited on <span id="CH_zTm80f888da6a" title="Sat, 02 May 2009 17:22:11 +0000">May 3, 2009 at 1:22am</span><script type="text/javascript">WhenId('CH_zTm80f888da6a');</script><noscript>May 2, 2009 at 5:22pm UTC</noscript></span>
+<span class="dbtn" id="CH_btn49714"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49719"><span title="49719,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49719" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm716dd3c9c8" title="Sat, 02 May 2009 17:33:40 +0000">May 3, 2009 at 1:33am</span><script type="text/javascript">WhenId('CH_zTm716dd3c9c8');</script><noscript>May 2, 2009 at 5:33pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49719">
+Then I guess I didn't recall correctly  XD
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49719"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49878"><span title="49878,18326,1023,80,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49878" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm5b1a4fa586" title="Sun, 03 May 2009 17:53:25 +0000">May 4, 2009 at 1:53am</span><script type="text/javascript">WhenId('CH_zTm5b1a4fa586');</script><noscript>May 3, 2009 at 5:53pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Oromis/"><b>Oromis</b> (80)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49878">
+Thanks for the article.<br>
+<br>
+When using short memberfunctions, the body is often included, like this:<br>
+<br>
+<div class="auto"><table class="snippet"><tbody><tr><td class="rownum"><pre><code>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br></code></pre></td>
+<td class="source"><pre><code><cite>// MyClass.h</cite>
+
+<var>class</var> MyClass
+{
+  <var>private</var>:
+    <var>int</var> a;
+
+  <var>public</var>:
+    <var>void</var> set(<var>int</var> n) { a = n;}
+    <var>int</var>  get()      { <var>return</var> a;}
+};</code></pre></td><td class="C_btnholder"></td></tr></tbody></table></div>
+<br>
+<br>
+This results in an error when the header is included in both main.cpp and MyClass.cpp. Does this mean it should always be avoided?
+</div>
+<div class="dhow">
+<span class="sedited">Last edited on <span id="CH_zTmbfdce926ac" title="Sun, 03 May 2009 17:54:38 +0000">May 4, 2009 at 1:54am</span><script type="text/javascript">WhenId('CH_zTmbfdce926ac');</script><noscript>May 3, 2009 at 5:54pm UTC</noscript></span>
+<span class="dbtn" id="CH_btn49878"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49879"><span title="49879,13171,1023,13353,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49879" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm851df5c408" title="Sun, 03 May 2009 17:56:44 +0000">May 4, 2009 at 1:56am</span><script type="text/javascript">WhenId('CH_zTm851df5c408');</script><noscript>May 3, 2009 at 5:56pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/helios/"><b>helios</b> (13353)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49879">
+Yes. it costs nothing to put the function definitions in a separate file and you avoid errors errors.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49879"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49881"><span title="49881,18326,1023,80,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49881" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm8d76080646" title="Sun, 03 May 2009 17:57:56 +0000">May 4, 2009 at 1:57am</span><script type="text/javascript">WhenId('CH_zTm8d76080646');</script><noscript>May 3, 2009 at 5:57pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Oromis/"><b>Oromis</b> (80)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49881">
+Oke, thanks :)
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49881"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49884"><span title="49884,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49884" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm668131c1de" title="Sun, 03 May 2009 18:11:38 +0000">May 4, 2009 at 2:11am</span><script type="text/javascript">WhenId('CH_zTm668131c1de');</script><noscript>May 3, 2009 at 6:11pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49884">
+I disagree, actually.<br>
+<br>
+There is nothing wrong with shortcutting functions like that.  It's called "implicit inlining", and doing it may actually provide a performance boost for small functions like get/set members.  Taking the functions out of the class definition and putting them in a .cpp file means they can no longer be inlined, which may result in [ever-so-slightly] less efficient code (though you'll only really notice if you're calling the funciton <i>a whole lot</i> -- otherwise it doesn't really matter).<br>
+<br>
+That above MyClass.h example you gave <i>should not</i> generate any errors, no matter how many .cpp files you include it in.  If you are getting errors it must be due to something else.  Can you provide a minimal compilable example of where you are getting errors doing this?
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49884"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49890"><span title="49890,13171,1023,13353,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49890" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTmf562807713" title="Sun, 03 May 2009 18:41:00 +0000">May 4, 2009 at 2:41am</span><script type="text/javascript">WhenId('CH_zTmf562807713');</script><noscript>May 3, 2009 at 6:41pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/helios/"><b>helios</b> (13353)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49890">
+<table class="quote"><tbody><tr><td class="qd">Taking the functions out of the class definition and putting them in a .cpp file means they can no longer be inlined</td></tr></tbody></table>Functions without the inline keyword are never inlined. Functions with the inline keyword are inlined as the compiler sees fit.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49890"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49892"><span title="49892,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49892" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm8a4e1a49f2" title="Sun, 03 May 2009 18:45:32 +0000">May 4, 2009 at 2:45am</span><script type="text/javascript">WhenId('CH_zTm8a4e1a49f2');</script><noscript>May 3, 2009 at 6:45pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49892">
+I have read and heard otherwise from various sources.<br>
+<br>
+Here is one of them:<br>
+<br>
+<a href="http://www.parashift.com/c++-faq-lite/inline-functions.html#faq-9.8">http://www.parashift.com/c++-faq-lite/inline-functions.html#faq-9.8</a>
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49892"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49893"><span title="49893,13171,1023,13353,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49893" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTmf3ca98452a" title="Sun, 03 May 2009 18:58:58 +0000">May 4, 2009 at 2:58am</span><script type="text/javascript">WhenId('CH_zTmf3ca98452a');</script><noscript>May 3, 2009 at 6:58pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/helios/"><b>helios</b> (13353)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49893">
+It says defining the function inside the class declaration is an alias for the inline keyword.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49893"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49898"><span title="49898,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49898" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTmf973e4f0b5" title="Sun, 03 May 2009 19:52:38 +0000">May 4, 2009 at 3:52am</span><script type="text/javascript">WhenId('CH_zTmf973e4f0b5');</script><noscript>May 3, 2009 at 7:52pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49898">
+Er right.<br>
+<br>
+Meaning you can have functions inlined without using the inline keyword.  IE implicit inlining.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49898"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49899"><span title="49899,13171,1023,13353,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49899" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm23349368de" title="Sun, 03 May 2009 20:07:04 +0000">May 4, 2009 at 4:07am</span><script type="text/javascript">WhenId('CH_zTm23349368de');</script><noscript>May 3, 2009 at 8:07pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/helios/"><b>helios</b> (13353)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49899">
+Right. It still doesn't guarantee the compiler will inline, and it's possible to still have them in a separate file by using the inline keyword.<br>
+<br>
+Meh. Haven't had a good argument in a while. I think I'll start a thread and try to defend a purposely wrong premise.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49899"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49901"><span title="49901,18360,1023,13766,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49901" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTma872a15e8d" title="Sun, 03 May 2009 20:25:24 +0000">May 4, 2009 at 4:25am</span><script type="text/javascript">WhenId('CH_zTma872a15e8d');</script><noscript>May 3, 2009 at 8:25pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Disch/"><b>Disch</b> (13766)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49901">
+Well basically what I'm saying is this:<br>
+<br>
+- If he shortcuts and puts the function bodies in the class definition, he's implicitly inlining (<i>yes</i>)<br>
+- If he moves them to a .cpp file, they're no longer inlined (<i>no</i>)<br>
+- You can't inline a function that isn't #included in all source files that use it.  So even if he tries to add the inline keyword, if he moves the functions to a .cpp file, they won't be inlined (<i>no</i>)<br>
+<br>
+<table class="quote"><tbody><tr><td class="qd">I think I'll start a thread and try to defend a purposely wrong premise.</td></tr></tbody></table><br>
+<br>
+hahahaah.  I can't tell if you're being serious or sarcastic or what.  Either way it's funny.  XD
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49901"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg49903"><span title="49903,18326,1023,80,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg49903" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm81790d70c8" title="Sun, 03 May 2009 20:31:02 +0000">May 4, 2009 at 4:31am</span><script type="text/javascript">WhenId('CH_zTm81790d70c8');</script><noscript>May 3, 2009 at 8:31pm UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/Oromis/"><b>Oromis</b> (80)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i49903">
+I thought I tested it, but it compiles fine now... I must have made some other mistake. The fact that it's implicitly inlined explains why there is no problem with defining the function twice, I guess. Thanks.
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn49903"></span>
+
+</div>
+</div>
+</div>
+<div class="C_forPost" id="msg50141"><span title="50141,20092,1023,31,0"></span>
+<div class="box">
+<div class="boxtop">
+<div class="dwhen"><a href="http://www.cplusplus.com/forum/articles/10627/#msg50141" title="Link to this post"><img src="./Headers and Includes_ Why and How - C++ Forum_files/link.png" width="16" height="8"></a> <span id="CH_zTm961e08c5f7" title="Tue, 05 May 2009 06:28:44 +0000">May 5, 2009 at 2:28pm</span><script type="text/javascript">WhenId('CH_zTm961e08c5f7');</script><noscript>May 5, 2009 at 6:28am UTC</noscript></div>
+<div class="dwho"><a href="http://www.cplusplus.com/user/translore/"><b>translore</b> (31)</a></div>
+</div>
+<div class="dwhat" colspan="2" id="CH_i50141">
+I had a teacher "so and so" tell me not to include inside header files and I think I even read this in a C++ text but I really do like the method in this article. It seems like it will help more in the OOP approach and will help make the code more robust! Thanks for the article...
+</div>
+<div class="dhow">
+<span class="dbtn" id="CH_btn50141"></span>
+
+</div>
+</div>
+</div>
+</div><div class="rootinsMore"></div><div class="rootbtnMore"></div><div class="rootinsNew"></div><div id="CH_insNew"></div><div id="CH_subscription"></div><div class="rootedtNew"></div><div class="C_pages right">Pages: <span title="Current page">1</span><a href="http://www.cplusplus.com/forum/articles/10627/2/">2</a></div><script type="text/javascript">new for_PostList(10627,1,18360,0,'CH_PostList','CH_subscription',false,'CH_insNew','CH_edttl','/forum/thread.cgi','/forum/post.cgi','/forum/myposts.cgi',64,32,512,256,1024,16);</script></div>
+<script type="text/javascript">
+    google_ad_client = "ca-pub-1444228343479937";
+    google_ad_slot = "9701143201";
+    google_ad_width = 728;
+    google_ad_height = 90;
+</script>
+<!-- leaderboard -->
+<script type="text/javascript" src="./Headers and Includes_ Why and How - C++ Forum_files/show_ads.js.download">
+</script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><iframe width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" src="./Headers and Includes_ Why and How - C++ Forum_files/saved_resource.html"></iframe></ins></ins></div>
+<div id="I_nav">
+<div class="sect root">
+<h3><b><a href="http://www.cplusplus.com/">C++</a></b></h3>
+<ul>
+<li class="folder info"><a href="http://www.cplusplus.com/info/">Information</a></li>
+<li class="folder doc"><a href="http://www.cplusplus.com/doc/">Tutorials</a></li>
+<li class="folder reference"><a href="http://www.cplusplus.com/reference/">Reference</a></li>
+<li class="folder articles"><a href="http://www.cplusplus.com/articles/">Articles</a></li>
+<li class="folder selected forum"><a href="http://www.cplusplus.com/forum/">Forum</a></li>
+</ul>
+</div>
+<div class="sect">
+<h3><b><a href="http://www.cplusplus.com/forum/">Forum</a></b></h3>
+<ul>
+<li><a href="http://www.cplusplus.com/forum/beginner/"><b>Beginners</b></a></li><li><a href="http://www.cplusplus.com/forum/windows/"><b>Windows Programming</b></a></li><li><a href="http://www.cplusplus.com/forum/unices/"><b>UNIX/Linux Programming</b></a></li><li><a href="http://www.cplusplus.com/forum/general/"><b>General C++ Programming</b></a></li><li><a href="http://www.cplusplus.com/forum/lounge/"><b>Lounge</b></a></li><li><a href="http://www.cplusplus.com/forum/jobs/"><b>Jobs</b></a></li></ul>
+</div>
+<div id="I_subnav"></div>
+<div class="C_ad234">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7688470879129516";
+google_ad_slot = "7445514729";
+google_ad_width = 234;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript" src="./Headers and Includes_ Why and How - C++ Forum_files/show_ads.js.download">
+</script><ins id="aswift_1_expand" style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:234px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:234px;background-color:transparent"><iframe width="234" height="60" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" src="./Headers and Includes_ Why and How - C++ Forum_files/saved_resource(1).html"></iframe></ins></ins>
+</div></div>
+<div id="I_midclear"></div>
+</div>
+</div>
+<div id="I_bottom">
+<div id="I_footer">
+	<a href="http://www.cplusplus.com/">Home page</a> | <a href="http://www.cplusplus.com/privacy.do">Privacy policy</a><br>© cplusplus.com, 2000-2016 - All rights reserved - <i>v3.1</i><br><a href="http://www.cplusplus.com/contact.do?referrer=www.cplusplus.com%2Fforum%2Farticles%2F10627%2F">Spotted an error? contact us</a>
+</div>
+</div>
+
+<script type="text/javascript">
+<!--
+function NavFor(us) {document.getElementById('I_subnav').innerHTML=us.ok?'<div class="sect"><h3><b><a href="/user/">'+us.user+'</a></b></h3><ul><li><a href="/forum/myposts.cgi">My topics</a></li></ul></div>':'';}onSession(NavFor);ready();
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-521783-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
+//-->
+</script>
+
+<script>
+(function(){
+  // mini cookie-consent code (c) Juan Soulie, 2016
+  var s ='consent=cookie';
+  var e = document.createElement('div');
+  e.innerHTML = '<div style="background:#eed;padding:10px;margin:0;text-align:center;border-bottom:1px solid #446"><span style="color:#210;font-weight:bold">This website uses cookies. By continuing, you give permission to deploy cookies, as detailed in our <a href="/privacy.do">privacy policy</a>.</span> <span style="margin-left:10px;border-radius:5px;padding:1px 10px;background:#bcd;border:1px solid #789;cursor:pointer">ok</span></div>';
+  if (document.cookie.indexOf(s)!==-1) return;
+  var b = document.getElementsByTagName('body')[0];
+  b.insertBefore(e,b.firstChild);
+  var x = function() { document.cookie = s+'; path=/'; e.parentNode.removeChild(e); };
+  e.addEventListener('click',x);
+  document.addEventListener('scroll',x);
+})();
+</script>
+
+
+<iframe id="google_osd_static_frame_8484232485636" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./Headers and Includes_ Why and How - C++ Forum_files/saved_resource(2).html"></iframe></body></html>
