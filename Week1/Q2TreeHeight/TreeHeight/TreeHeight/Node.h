@@ -2,9 +2,10 @@
 #include <vector>
 
 template <typename T>
-struct Node
+class Node
 {
+public:
 	T value;
-	std::vector<Node> children;
+	std::vector<Node<T>> children;
 };
 

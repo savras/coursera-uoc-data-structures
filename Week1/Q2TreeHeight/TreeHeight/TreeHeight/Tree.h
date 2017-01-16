@@ -1,69 +1,61 @@
 #pragma once
 #include "Node.h"
 #include <vector>
+#include <unordered_set>
+#include <algorithm>
+#include <limits>
 
+using std::unordered_set;
 using std::vector;
+using std::max;
 
-template <typename T>
 class Tree
 {
-	Node<T> root;
+	Node<int> root;
+	vector<Node<int>> nodes;	// http://stackoverflow.com/questions/2275076/is-stdvector-copying-the-objects-with-a-push-back
+	int GetHeightRecursive(const Node<int> &node, int height) const;
 public:
-	void BuildIterative(const vector<int>&);
-	void BuildRecursive(const vector<int>&);
+	void Build(const vector<int>&);
 	int HeightIterative() const;
 	int HeightRecursive() const;
 };
 
-template <typename T>	// How to constrain this to basic types?
-void Tree<T>::BuildIterative(const vector<int>& arr) {
+void Tree::Build(const vector<int>& arr) {
+	for (size_t i = 0; i < arr.size(); i++) {
+		Node<int> node;
+		node.value = i;
+		nodes.push_back(node);
+	}
+	
+	for (size_t i = 0; i < arr.size(); i++) {
+		int parentIndex = arr[i];
 
-	Node parent;
-	for (int i = 0; i < arr.size(); i++) {
-		// if(i has been processed e.g. in map()) { continue; }	
-		
-		if (arr[i] == -1) {
-			root = node;
+		if (parentIndex == -1)
+		{
+			root = nodes[i];
 		}
 		else {
-			Node<T> child;
-			child.value = i;
-			int current = arr[i];
-			// Add i to map;
-
-			while (current != -1) {
-
-				// if(current exists in map) { 
-				//   get node 4.
-				//   node 4.children.push_back(child);
-				//	 break;
-				// } 
-				// else {
-				Node node;
-				node.value = current;
-				node.childdren.push_back(child);
-
-				child = node;
-				current = arr[current];
-				// Add i to map;
-			}
-
-			root.children.push_back(child);
-		}		
-	}	
+			nodes[parentIndex].children.push_back(nodes[i]);
+		}
+	}
 }
 
-template <typename T>
-void Tree<T>::BuildRecursive(const vector<int> &arr) {
-
+int Tree::HeightRecursive() const {
+	return GetHeightRecursive(root, 1);
 }
 
-template <typename T>
-int Tree<T>::HeightRecursive() const {
-	
+int Tree::GetHeightRecursive(const Node<int> &node, int height) const {
+	if (node.children.empty()) {
+		return height;
+	}
+
+	int maxHeight = INT_MIN;
+	for (size_t i = 0; i < node.children.size(); i++) {
+		maxHeight = max(maxHeight, GetHeightRecursive(node.children[i], height) + 1);
+	}
+	return maxHeight;
 }
 
-template <typename T>
-int Tree<T>::HeightIterative() const {
-	
+int Tree::HeightIterative() const {
+	return 0;
 }
