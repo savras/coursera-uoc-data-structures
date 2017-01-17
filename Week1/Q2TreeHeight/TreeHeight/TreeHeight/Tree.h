@@ -27,13 +27,16 @@ class Tree
 	Node<int> *root;
 	Node<int> *nodes;	// http://stackoverflow.com/questions/2275076/is-stdvector-copying-the-objects-with-a-push-back
 	int GetHeightRecursive(const Node<int> *node, int height) const;
+	int GetMaxHeight(const vector<int>&) const;
+	int BuildHeightRecursive(const vector<int>&, const int, vector<int>&) const;
 public:
 	Tree(const int n);
 	~Tree();
 	void Build(const vector<int>&);
 	int HeightIterative() const;
 	int HeightRecursive() const;
-	int HeightDynamic(const vector<int>&) const;
+	int HeightDynamicIterative(const vector<int>&) const;
+	int HeightDynamicRecursive(const vector<int>&) const;
 };
 
 Tree::Tree(const int n) {
@@ -98,7 +101,40 @@ int Tree::HeightIterative() const {
 	return 0;
 }
 
-int Tree::HeightDynamic(const vector<int> &arr) const {
+int Tree::HeightDynamicRecursive(const vector<int> &arr) const {
+	vector<int> heights(arr.size());
+
+	for (int i = 0; i < arr.size(); i++) {
+		int temp = BuildHeightRecursive(arr, i, heights);
+	}
+
+	return GetMaxHeight(heights);
+}
+
+int Tree::BuildHeightRecursive(const vector<int> &arr, const int i, vector<int>& heights) const {
+	if (heights[i] != 0) {
+		return heights[i];
+	}
+	
+	if (arr[i] == -1) {
+		heights[i] = 1;
+		return 1;
+	}
+
+	heights[i] = BuildHeightRecursive(arr, arr[i], heights) + 1;
+	return heights[i];
+}
+
+int Tree::GetMaxHeight(const vector<int> &heights) const {
+	int maxHeight = INT_MIN;
+	for (int i = 0; i < heights.size(); i++)
+	{
+		maxHeight = max(maxHeight, heights[i]);
+	}
+	return maxHeight;
+}
+
+int Tree::HeightDynamicIterative(const vector<int> &arr) const {
 	vector<int> steps;
 	vector<int> heights(arr.size());
 
@@ -132,5 +168,5 @@ int Tree::HeightDynamic(const vector<int> &arr) const {
 		}
 	}
 
-	return 0;
+	return GetMaxHeight(heights);
 }

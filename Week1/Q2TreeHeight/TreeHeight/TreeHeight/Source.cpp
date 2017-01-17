@@ -17,9 +17,10 @@ int main() {
 		arr.push_back(val);
 	}
 
-	tree.Build(arr);
+	//tree.Build(arr);
 	//cout << tree.HeightRecursive();
-	cout << tree.HeightDynamic(arr);
+	//cout << tree.HeightDynamicIterative(arr);
+	cout << tree.HeightDynamicRecursive(arr);
 
 	return 0;
 }
