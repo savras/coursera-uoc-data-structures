@@ -1,8 +1,5 @@
 #pragma once
 #include <vector>
-#include <memory>
-
-using std::unique_ptr;
 
 template <typename T>
 class Node

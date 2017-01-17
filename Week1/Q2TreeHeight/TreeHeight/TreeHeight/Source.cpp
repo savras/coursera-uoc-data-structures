@@ -18,7 +18,8 @@ int main() {
 	}
 
 	tree.Build(arr);
-	cout << tree.HeightRecursive();
+	//cout << tree.HeightRecursive();
+	cout << tree.HeightDynamic(arr);
 
 	return 0;
 }

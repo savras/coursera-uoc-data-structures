@@ -13,37 +13,51 @@ Node const *const ptr;  // Same as above
 #include <unordered_set>
 #include <algorithm>
 #include <limits>
-#include <memory>
+#include <map>
 
 using std::unordered_set;
 using std::vector;
 using std::max;
-using std::unique_ptr;
+using std::map;
+using std::for_each;
 
 class Tree
 {
+	int size;
 	Node<int> *root;
 	Node<int> *nodes;	// http://stackoverflow.com/questions/2275076/is-stdvector-copying-the-objects-with-a-push-back
 	int GetHeightRecursive(const Node<int> *node, int height) const;
 public:
-	Tree(const int &n);
+	Tree(const int n);
 	~Tree();
 	void Build(const vector<int>&);
 	int HeightIterative() const;
 	int HeightRecursive() const;
+	int HeightDynamic(const vector<int>&) const;
 };
 
-Tree::Tree(const int &n) {
+Tree::Tree(const int n) {
+	size = n;
 	nodes = new Node<int>[n]();
 }
 
 Tree::~Tree() {
 	delete[] nodes;
 	nodes = nullptr;
+
+
+	for (int i = 0; i < size; i++) {
+		vector<Node<int>*> children = nodes[i].children;
+
+		for (vector<Node<int>*>::const_iterator it = children.begin(); it != children.end(); it++)
+		{
+			delete *it;
+		}
+		children.clear();
+	}
 }
 
 void Tree::Build(const vector<int>& arr) {
-	Node<int> *p = nodes;
 	for (size_t i = 0; i < arr.size(); i++) {
 		Node<int> node;
 		node.value = i;
@@ -58,7 +72,6 @@ void Tree::Build(const vector<int>& arr) {
 			root = &nodes[i];
 		}
 		else {
-			//std::unique_ptr<Node<int>> ptr(&nodes[i]);
 			nodes[parentIndex].children.push_back(&nodes[i]);
 		}
 	}
@@ -82,5 +95,42 @@ int Tree::GetHeightRecursive(const Node<int> *node, int height) const {
 }
 
 int Tree::HeightIterative() const {
+	return 0;
+}
+
+int Tree::HeightDynamic(const vector<int> &arr) const {
+	vector<int> steps;
+	vector<int> heights(arr.size());
+
+	steps.push_back(0);
+	int parentIndex = arr[0];
+	while (parentIndex != -1) {
+		steps.push_back(parentIndex);
+		parentIndex = arr[steps.back()];
+	}
+
+	int height = 0;
+	while (!steps.empty()) {
+		heights[steps.back()] = ++height;
+		steps.pop_back();
+	}
+
+	for (int i = 1; i < arr.size(); i++) {
+		parentIndex = arr[i];
+		steps.push_back(i);
+
+		while (heights[steps.back()] == 0) {
+			steps.push_back(parentIndex);
+			parentIndex = arr[parentIndex];
+		}
+
+		int lastKnownHeight = heights[steps.back()];
+		steps.pop_back();
+		while (!steps.empty()) {
+			heights[steps.back()] = ++lastKnownHeight;
+			steps.pop_back();
+		}
+	}
+
 	return 0;
 }
