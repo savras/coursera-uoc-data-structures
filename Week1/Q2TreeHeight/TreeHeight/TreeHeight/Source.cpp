@@ -11,13 +11,12 @@ int main() {
 	cin >> n;
 
 	Tree tree(n);
-	vector<int> arr;
+	vector<int> arr(n);
 	for (size_t i = 0; i < n; i++) {
-		cin >> val;
-		arr.push_back(val);
+		cin >> arr[i];
 	}
 
-	//tree.Build(arr);
+	tree.Build(arr);
 	//cout << tree.HeightRecursive();
 	//cout << tree.HeightDynamicIterative(arr);
 	cout << tree.HeightDynamicRecursive(arr);
