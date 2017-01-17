@@ -9,6 +9,6 @@ class Node
 {
 public:
 	T value;
-	std::vector<unique_ptr<Node<T>>> children;
+	std::vector<Node<T>*> children;
 };
 

@@ -10,7 +10,7 @@ int main() {
 	int n, val;
 	cin >> n;
 
-	Tree tree;
+	Tree tree(n);
 	vector<int> arr;
 	for (size_t i = 0; i < n; i++) {
 		cin >> val;

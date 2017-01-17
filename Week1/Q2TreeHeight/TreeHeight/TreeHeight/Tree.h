@@ -23,19 +23,31 @@ using std::unique_ptr;
 class Tree
 {
 	Node<int> *root;
-	vector<Node<int>> nodes;	// http://stackoverflow.com/questions/2275076/is-stdvector-copying-the-objects-with-a-push-back
+	Node<int> *nodes;	// http://stackoverflow.com/questions/2275076/is-stdvector-copying-the-objects-with-a-push-back
 	int GetHeightRecursive(const Node<int> *node, int height) const;
 public:
+	Tree(const int &n);
+	~Tree();
 	void Build(const vector<int>&);
 	int HeightIterative() const;
 	int HeightRecursive() const;
 };
 
+Tree::Tree(const int &n) {
+	nodes = new Node<int>[n]();
+}
+
+Tree::~Tree() {
+	delete[] nodes;
+	nodes = nullptr;
+}
+
 void Tree::Build(const vector<int>& arr) {
+	Node<int> *p = nodes;
 	for (size_t i = 0; i < arr.size(); i++) {
 		Node<int> node;
 		node.value = i;
-		nodes.push_back(node);
+		nodes[i] = node;
 	}
 	
 	for (size_t i = 0; i < arr.size(); i++) {
@@ -46,8 +58,8 @@ void Tree::Build(const vector<int>& arr) {
 			root = &nodes[i];
 		}
 		else {
-			std::unique_ptr<Node<int>> ptr(&nodes[i]);
-			nodes[parentIndex].children.push_back(std::move(ptr));
+			//std::unique_ptr<Node<int>> ptr(&nodes[i]);
+			nodes[parentIndex].children.push_back(&nodes[i]);
 		}
 	}
 }
@@ -62,10 +74,10 @@ int Tree::GetHeightRecursive(const Node<int> *node, int height) const {
 	}
 
 	int maxHeight = INT_MIN;
-	//for (size_t i = 0; i < node->children.size(); i++) {
-	//	Node<int> *ptr = node->children.at(i).get();
-	//	maxHeight = max(maxHeight, GetHeightRecursive(ptr, height) + 1);
-	//}
+	for (size_t i = 0; i < node->children.size(); i++) {
+		Node<int> *ptr = node->children[i];
+		maxHeight = max(maxHeight, GetHeightRecursive(ptr, height) + 1);
+	}
 	return maxHeight;
 }
 
