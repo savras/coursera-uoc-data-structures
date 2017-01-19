@@ -10,16 +10,13 @@ Node const *const ptr;  // Same as above
 #pragma once
 #include "Node.h"
 #include <vector>
-#include <unordered_set>
 #include <algorithm>
 #include <limits>
-#include <map>
 
-using std::unordered_set;
+/* Do not use using statements in header file: http://codereview.stackexchange.com/questions/60716/stl-queue-implementation
 using std::vector;
 using std::max;
-using std::map;
-using std::for_each;
+*/
 
 class Tree
 {
@@ -27,16 +24,16 @@ class Tree
 	Node<int> *root;
 	Node<int> *nodes;	// http://stackoverflow.com/questions/2275076/is-stdvector-copying-the-objects-with-a-push-back
 	int GetHeightRecursive(const Node<int> *node, int height) const;
-	int GetMaxHeight(const vector<int>&) const;
-	void BuildHeightRecursive(const vector<int>&, const int, vector<int>&) const;
+	int GetMaxHeight(const std::vector<int>&) const;
+	void BuildHeightRecursive(const std::vector<int>&, const int, std::vector<int>&) const;
 public:
 	Tree(const int n);
 	~Tree();
-	void Build(const vector<int>&);
+	void Build(const std::vector<int>&);
 	int HeightIterative() const;
 	int HeightRecursive() const;
-	int HeightDynamicIterative(const vector<int>&) const;
-	int HeightDynamicRecursive(const vector<int>&) const;
+	int HeightDynamicIterative(const std::vector<int>&) const;
+	int HeightDynamicRecursive(const std::vector<int>&) const;
 };
 
 Tree::Tree(const int n) {
@@ -49,9 +46,9 @@ Tree::~Tree() {
 	nodes = nullptr;
 
 	/*for (int i = 0; i < size; i++) {
-		vector<Node<int>*> children = nodes[i].children;
+		std::vector<Node<int>*> children = nodes[i].children;
 
-		for (vector<Node<int>*>::const_iterator it = children.begin(); it != children.end(); it++)
+		for (std::vector<Node<int>*>::const_iterator it = children.begin(); it != children.end(); it++)
 		{
 			delete *it;
 		}
@@ -59,7 +56,7 @@ Tree::~Tree() {
 	}*/
 }
 
-void Tree::Build(const vector<int>& arr) {
+void Tree::Build(const std::vector<int>& arr) {
 	for (size_t i = 0; i < arr.size(); i++) {
 		Node<int> node;
 		node.value = i;
@@ -91,7 +88,7 @@ int Tree::GetHeightRecursive(const Node<int> *node, int height) const {
 	int maxHeight = INT_MIN;
 	for (size_t i = 0; i < node->children.size(); i++) {
 		Node<int> *ptr = node->children[i];
-		maxHeight = max(maxHeight, GetHeightRecursive(ptr, height) + 1);
+		maxHeight = std::max(maxHeight, GetHeightRecursive(ptr, height) + 1);
 	}
 	return maxHeight;
 }
@@ -100,8 +97,8 @@ int Tree::HeightIterative() const {
 	return 0;
 }
 
-int Tree::HeightDynamicRecursive(const vector<int> &arr) const {
-	vector<int> heights(arr.size());
+int Tree::HeightDynamicRecursive(const std::vector<int> &arr) const {
+	std::vector<int> heights(arr.size());
 
 	for (int i = 0; i < arr.size(); i++) {
 		BuildHeightRecursive(arr, i, heights);
@@ -110,7 +107,7 @@ int Tree::HeightDynamicRecursive(const vector<int> &arr) const {
 	return GetMaxHeight(heights);
 }
 
-void Tree::BuildHeightRecursive(const vector<int> &arr, const int i, vector<int>& heights) const {
+void Tree::BuildHeightRecursive(const std::vector<int> &arr, const int i, std::vector<int>& heights) const {
 	if (heights[i] != 0) {
 		return;
 	}
@@ -127,18 +124,18 @@ void Tree::BuildHeightRecursive(const vector<int> &arr, const int i, vector<int>
 	heights[i] = heights[arr[i]] + 1;
 }
 
-int Tree::GetMaxHeight(const vector<int> &heights) const {
+int Tree::GetMaxHeight(const std::vector<int> &heights) const {
 	int maxHeight = INT_MIN;
 	for (int i = 0; i < heights.size(); i++)
 	{
-		maxHeight = max(maxHeight, heights[i]);
+		maxHeight = std::max(maxHeight, heights[i]);
 	}
 	return maxHeight;
 }
 
-int Tree::HeightDynamicIterative(const vector<int> &arr) const {
-	vector<int> steps;
-	vector<int> heights(arr.size());
+int Tree::HeightDynamicIterative(const std::vector<int> &arr) const {
+	std::vector<int> steps;
+	std::vector<int> heights(arr.size());
 
 	steps.push_back(0);
 	int parentIndex = arr[0];
