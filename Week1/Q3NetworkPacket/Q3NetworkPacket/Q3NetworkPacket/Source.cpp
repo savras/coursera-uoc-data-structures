@@ -9,6 +9,7 @@ using std::pair;
 using std::vector;
 using std::endl;
 using std::queue;
+using std::max;
 
 int main() {
 	int S, n;
@@ -36,10 +37,10 @@ int main() {
 
 		if (queue.empty()) {
 			cout << A << endl;
-			queue.push(runningSum + P);
+			queue.push(A + P);
 		}
 		else if (queue.size() < S) {
-			cout << queue.back() << endl;
+			cout << max(A, queue.back()) << endl;
 			queue.push(runningSum + P);
 		}
 		else {
