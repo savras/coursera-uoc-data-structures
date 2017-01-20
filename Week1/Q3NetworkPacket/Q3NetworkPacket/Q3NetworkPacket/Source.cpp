@@ -37,7 +37,7 @@ int main() {
 
 		if (queue.empty()) {
 			cout << A << endl;
-			queue.push(A + P);
+			queue.push(A + P);	// Because at ith arrival time, the processing time will be Pi seconds AFTER Ai
 		}
 		else if (queue.size() < S) {
 			cout << max(A, queue.back()) << endl;
