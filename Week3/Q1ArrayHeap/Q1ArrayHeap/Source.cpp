@@ -17,5 +17,7 @@ int main() {
 	Heap<int> heap(arr);
 	heap.BuildHeap();
 
+	system("pause");
+
 	return 0;
 }
