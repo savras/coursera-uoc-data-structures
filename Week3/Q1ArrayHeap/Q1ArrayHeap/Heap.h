@@ -82,40 +82,33 @@ void Heap<T>::SieveDown(const int parentIndex) {
 
 	int leftIndex = GetLeftChildIndex(parentIndex);
 	int rightIndex = GetRightChildIndex(parentIndex);
-	T parentVal = _arr[parentIndex];
+
+	if (leftIndex == -1 && rightIndex == -1) {
+		return;
+	}
 
 	int sieveDirectionIndex = 0;
-	if (leftIndex != -1 && rightIndex != -1) {
+	if (rightIndex == -1 && _arr[parentIndex] > _arr[leftIndex]) {
+		sieveDirectionIndex = leftIndex;
+	}
+	else if (leftIndex == -1 && _arr[parentIndex] > _arr[rightIndex]) {
+		sieveDirectionIndex = rightIndex;
+	}
+	else {
 		T leftVal = _arr[leftIndex];
 		T rightVal = _arr[rightIndex];
+		T parentVal = _arr[parentIndex];
+		if (parentVal < leftVal && parentVal < rightVal) {
+			return;	// Heap preserved
+		}
 
 		if (parentVal > leftVal || parentVal > rightVal) {
+			sieveDirectionIndex = leftVal > rightVal ? rightIndex : leftIndex;
+		}
+	}
 
-			if (leftVal > rightVal) {
-				sieveDirectionIndex = rightIndex;
-			}
-			else if (rightVal > leftVal) {
-				sieveDirectionIndex = leftIndex;
-			}
-			// else heap property is preserved.
-			Swap(parentIndex, sieveDirectionIndex);
-			SieveDown(sieveDirectionIndex);
-		}
-	}
-	else if (leftIndex != -1) {
-		T leftVal = _arr[leftIndex];
-		if (parentVal > leftVal) {
-			Swap(parentIndex, leftIndex);
-			SieveDown(leftIndex);
-		}
-	}
-	else if(rightIndex != -1) {
-		T rightVal = _arr[rightIndex];
-		if (parentVal > rightVal) {
-			Swap(parentIndex, rightIndex);
-			SieveDown(rightIndex);
-		}
-	} 
+	Swap(parentIndex, sieveDirectionIndex);
+	SieveDown(sieveDirectionIndex);
 }
 
 template <typename T>
