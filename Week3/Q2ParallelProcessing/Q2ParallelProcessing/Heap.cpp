@@ -7,9 +7,10 @@ using std::cout;
 using std::endl;
 using std::pair;
 
-Heap::Heap(vector<pair<int,int>> arr) {
+Heap::Heap(const vector<pair<int,int>>& arr, const vector<int>& input) {
 	_arr = arr;
-	_maxHeapSize = _arr.size();
+	_input = input;
+	_maxHeapSize = arr.size();
 	_size = _maxHeapSize;
 }
 
@@ -53,38 +54,52 @@ void Heap::Swap(int ia, int ib) {
 	_arr[ib] = temp;
 }
 
-void Heap::SieveUp(int index) {
-	int parentIndex = ParentIndex(index);
-	if (parentIndex == -1) {
+void Heap::SiftDown(const int index) {
+	if (index < 0 || index >= _size) {
 		return;
 	}
 
-	int swapIndex = parentIndex;
-	int leftIndex = LeftChildIndex(parentIndex);
-	int rightIndex = RightChildIndex(parentIndex);
-	if (leftIndex != -1 && _arr[swapIndex].first > _arr[leftIndex].first) {
-		swapIndex = leftIndex;
+	int swapIndex = index;
+
+	int leftIndex = LeftChildIndex(index);
+	if (leftIndex != -1 &&  _arr[swapIndex].second >= _arr[leftIndex].second) {
+		if (_arr[swapIndex].second == _arr[leftIndex].second)
+		{
+			swapIndex = _arr[swapIndex].first > _arr[leftIndex].first ? leftIndex : swapIndex;
+		}
+		else {
+			swapIndex = leftIndex;
+		}
 	}
-	if (rightIndex != -1 && _arr[swapIndex].first > _arr[rightIndex].first) {
-		swapIndex = rightIndex;
+
+	int rightIndex = RightChildIndex(index);
+	if (rightIndex != -1 && _arr[swapIndex].second >= _arr[rightIndex].second) {
+		if (_arr[swapIndex].second == _arr[rightIndex].second)
+		{
+			swapIndex = _arr[swapIndex].first > _arr[rightIndex].first ? rightIndex : swapIndex;
+		}
+		else {
+			swapIndex = rightIndex;
+		}
 	}
-	if (parentIndex != swapIndex) {
-		Swap(parentIndex, swapIndex);
-		SieveUp(parentIndex);
+
+	if (index != swapIndex) {
+		Swap(index, swapIndex);
+		SiftDown(swapIndex);
 	}
 }
 
-int Heap::Extract() {
-	pair<int,int> result = _arr[0];
+void Heap::Process() {
+	for (size_t i = 0; i < _input.size(); i++) {
+		cout << _arr[0].first << " " << _arr[0].second << endl;
+		_arr[0].second += _input[i];
 
-	Swap(0, _size - 1);
-	SieveUp(_size - 1);
-
-	return result.first;
+		SiftDown(0);
+	}
 }
 
 void Heap::BuildHeap() {
-	for (size_t i = 1; i < _size; i+= 2) {
-		SieveUp(i);
+	for (int i = _size/2; i >= 0; i--) {	// Each node in the levels before the last/leaf
+		SiftDown(i);
 	}
 }

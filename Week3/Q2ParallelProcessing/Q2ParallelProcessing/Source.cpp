@@ -11,14 +11,19 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-	vector<pair<int,int>> arr(n);
+	vector<pair<int,int>> threads(n);	// <thread,time>
 	for (size_t i = 0; i < n; i++) {
-		cin >> arr[i].first;
-		arr[i].second = i;
+		threads[i].first = i;
 	}
 
-	Heap heap(arr);
+	vector<int> input(m);
+	for (size_t i = 0; i < m; i++) {
+		cin >> input[i];
+	}
+
+	Heap heap(threads, input);
 	heap.BuildHeap();
+	heap.Process();
 
 	system("pause");
 
