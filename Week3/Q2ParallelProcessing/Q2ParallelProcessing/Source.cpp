@@ -11,12 +11,12 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-	vector<pair<int,int>> threads(n);	// <thread,time>
+	vector<pair<int, long long>> threads(n);	// <thread,time>
 	for (size_t i = 0; i < n; i++) {
 		threads[i].first = i;
 	}
 
-	vector<int> input(m);
+	vector<long long> input(m);
 	for (size_t i = 0; i < m; i++) {
 		cin >> input[i];
 	}

@@ -7,7 +7,7 @@ using std::cout;
 using std::endl;
 using std::pair;
 
-Heap::Heap(const vector<pair<int,int>>& arr, const vector<int>& input) {
+Heap::Heap(const vector<pair<int, long long>>& arr, const vector<long long>& input) {
 	_arr = arr;
 	_input = input;
 	_maxHeapSize = arr.size();

@@ -3,8 +3,8 @@
 
 // Min Heap.
 class Heap {
-	std::vector<std::pair<int,int>> _arr;
-	std::vector<int> _input;
+	std::vector<std::pair<int, long long>> _arr;
+	std::vector<long long> _input;
 	int _size;
 	int _maxHeapSize;
 	void Swap(const int, const int);
@@ -13,7 +13,7 @@ class Heap {
 	int RightChildIndex(const int) const;
 	void SiftDown(const int);
 public:
-	Heap(const std::vector<std::pair<int,int>>&, const std::vector<int>&);
+	Heap(const std::vector<std::pair<int, long long>>&, const std::vector<long long>&);
 	void Process();
 	void BuildHeap();
 };
