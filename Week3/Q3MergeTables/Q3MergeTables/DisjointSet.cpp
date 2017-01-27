@@ -1,10 +1,14 @@
 #include "DisjointSet.h"
 #include <vector>
+#include <algorithm>
+#include <iostream>
 
 using std::vector;
 using std::pair;
+using std::max;
+using std::cout;
 
-DisjointSet::DisjointSet(const vector<int>& rows) {
+DisjointSet::DisjointSet(const vector<int>& rows, int max) {
 	int size = rows.size();
 	for (size_t i = 0; i < size; i++) {
 		_parent.push_back(i);
@@ -15,6 +19,7 @@ DisjointSet::DisjointSet(const vector<int>& rows) {
 	}
 
 	_rows = rows;
+	_max = max;
 }
 
 int DisjointSet::Find(const int i) {
@@ -30,16 +35,25 @@ void DisjointSet::Merge(const int destination, const int source) {
 	int sourceRoot = Find(source);
 	int destinationRoot = Find(destination);
 
-	if (_rank[source] < _rank[destinationRoot]) {
-		_parent[source] = destinationRoot;
-		_rows[destinationRoot] += _rows[source];
-		_rows[source] = 0;
+	if (sourceRoot != destinationRoot) {
+		if (_rank[sourceRoot] < _rank[destinationRoot]) {
+			_parent[sourceRoot] = destinationRoot;
+			_rows[destinationRoot] += _rows[sourceRoot];
+			_rows[sourceRoot] = 0;
+		}
+		else {
+			_parent[destinationRoot] = sourceRoot;
+			_rows[sourceRoot] += _rows[destinationRoot];
+			_rows[destinationRoot] = 0;
+			_rank[destinationRoot]++;
+		}
 	}
-	else {
-		_parent[destinationRoot] = source;
-		_rows[source] = _rows[destinationRoot];
-		_rows[destinationRoot] = 0;
-		_rank[destinationRoot]++;
 
+	_result.push_back(max(_rows[sourceRoot], max(_max, _rows[destinationRoot])));
+}
+
+void DisjointSet::PrintResult() {
+	for (const auto& result : _result) {
+		std::cout << result << std::endl;
 	}
 }
