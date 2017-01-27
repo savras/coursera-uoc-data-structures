@@ -22,7 +22,7 @@ DisjointSet::DisjointSet(const vector<int>& rows, int max) {
 	_max = max;
 }
 
-int DisjointSet::Find(const int i) {
+int DisjointSet::Find(const int i) const {
 	if (_parent[i] == i)
 	{
 		return i;
@@ -31,9 +31,30 @@ int DisjointSet::Find(const int i) {
 	return Find(_parent[i]);
 }
 
+int DisjointSet::GetParent(const int i) {
+	vector<int> arr;
+	arr.push_back(i);
+
+	int parent = _parent[i];
+	while (parent != _parent[parent]) {
+		arr.push_back(parent);
+		parent = _parent[parent];
+	}
+
+	PathCompression(arr, parent);
+	return parent;
+}
+
+void DisjointSet::PathCompression(const vector<int>& arr, const int root) {
+	for (const auto& index: arr) {
+		_parent[index] = root;
+		_rank[index] = 1;
+	}
+}
+
 void DisjointSet::Merge(const int destination, const int source) {
-	int sourceRoot = Find(source);
-	int destinationRoot = Find(destination);
+	int sourceRoot = GetParent(source);
+	int destinationRoot = GetParent(destination);
 
 	if (sourceRoot != destinationRoot) {
 		if (_rank[sourceRoot] < _rank[destinationRoot]) {
@@ -52,7 +73,7 @@ void DisjointSet::Merge(const int destination, const int source) {
 	_result.push_back(max(_rows[sourceRoot], max(_max, _rows[destinationRoot])));
 }
 
-void DisjointSet::PrintResult() {
+void DisjointSet::PrintResult() const {
 	for (const auto& result : _result) {
 		std::cout << result << std::endl;
 	}
