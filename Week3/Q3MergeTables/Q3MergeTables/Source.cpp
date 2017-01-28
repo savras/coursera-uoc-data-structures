@@ -13,8 +13,8 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-	int maximum = 0;
-	vector<int> rows(n);
+	long long maximum = 0;
+	vector<long long> rows(n);
 	for (size_t i = 0; i < n; i++) {
 		cin >> rows[i];
 		maximum = max(maximum, rows[i]);

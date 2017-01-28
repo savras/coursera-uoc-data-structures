@@ -8,7 +8,7 @@ using std::pair;
 using std::max;
 using std::cout;
 
-DisjointSet::DisjointSet(const vector<int>& rows, int max) {
+DisjointSet::DisjointSet(const vector<long long>& rows, const long long max) {
 	int size = rows.size();
 	for (size_t i = 0; i < size; i++) {
 		_parent.push_back(i);
