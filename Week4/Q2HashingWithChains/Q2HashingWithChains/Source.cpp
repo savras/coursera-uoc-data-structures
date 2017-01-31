@@ -14,22 +14,22 @@ int main() {
 	string op, word;
 	int index;
 
-	for (size_t i; i < n; i++) {
+	for (size_t i = 0; i < n; i++) {
 		cin >> op;
 
 		if (op.compare("add") == 0) {
 			cin >> word;
 			hc.Add(word);
 		}
-		else if (op.compare("del")) {
+		else if (op.compare("del") == 0) {
 			cin >> word;
 			hc.Del(word);
 		}
-		else if (op.compare("find")) {
+		else if (op.compare("find") == 0) {
 			cin >> word;
 			hc.Find(word);
 		}
-		else if (op.compare("check")) {
+		else if (op.compare("check") == 0) {
 			cin >> index;
 			hc.Check(index);
 		}
