@@ -12,7 +12,7 @@ public:
 	HashChain(int m) : _arr(m), _m(m) {};
 	void Add(const std::string&);
 	void Del(const std::string&);
-	void Find(const std::string&);
-	void Check(const int&) const;
+	std::string Find(const std::string&);
+	std::string Check(const int&) const;
 };
 

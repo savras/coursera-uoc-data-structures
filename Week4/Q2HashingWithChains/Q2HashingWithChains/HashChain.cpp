@@ -2,26 +2,25 @@
 #include <cmath>
 #include <iostream>
 #include <list>
+#include <sstream>
 
 using std::string;
 using std::list;
 using std::cout;
 using std::endl;
+using std::stringstream;
 
 void HashChain::Add(const string& str) {
 	int index = Hash(str);
-
-	list<string> l = _arr[index];
-	l.push_back(str);	
+	_arr[index].push_back(str);
 }
 
 void HashChain::Del(const string& str) {
 	int index = Hash(str);
-	list<string> l = _arr[index];
-	l.remove(str);
+	_arr[index].remove(str);
 }
 
-void HashChain::Find(const string& str) {
+string HashChain::Find(const string& str) {
 	int index = Hash(str);
 	list<string> l = _arr[index];
 
@@ -33,28 +32,26 @@ void HashChain::Find(const string& str) {
 		}
 	}
 
-	if (found) {
-		cout << "yes" << endl;		
-	}
-	else {
-		cout << "no" << endl;
-	}
+	return found ? "yes" : "no";
 }
 
-void HashChain::Check(const int& i) const {
+string HashChain::Check(const int& i) const {
 	if (i > 0) {
-		list<string> l = _arr[i];
-		if (l.size() > 0)
+
+		stringstream ss;
+		int length = _arr[i].size();
+		if (length > 0)
 		{
-			for (const auto& word : l) {
-				cout << word << " ";
+			list<string> l = _arr[i];
+			for (std::list<string>::reverse_iterator i = l.rbegin(); i != l.rend(); ++i)
+			{
+				ss << *i + " ";
 			}
-			cout << endl;
-			return;
+			return ss.str();
 		}
 	}
 
-	cout << " " << endl;
+	return " ";
 }
 
 int HashChain::Hash(const string& str) {
@@ -63,10 +60,9 @@ int HashChain::Hash(const string& str) {
 	const int p = 1000000007;
 	for (size_t i = 0; i < str.length(); i++) {
 		int ascii = (int)str[i];
-		int powerX = std::pow(x, i);
+		long long powerX = std::pow(x, i);
 
-		sum += (ascii * powerX);
+		sum += ascii * powerX;
 	}
-
 	return sum % p % _m;
 }
