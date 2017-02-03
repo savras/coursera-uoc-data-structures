@@ -12,6 +12,14 @@ using std::stringstream;
 
 void HashChain::Add(const string& str) {
 	int index = Hash(str);
+
+	// Enforce idempotence
+	for (auto it = _arr[index].begin(); it != _arr[index].end(); ++it) {
+		if (*it == str) {
+			return;
+		}
+	}
+
 	_arr[index].push_back(str);
 }
 
@@ -62,7 +70,7 @@ int HashChain::Hash(const string& str) {
 		int ascii = (int)str[i];
 		long long powerX = std::pow(x, i);
 
-		sum += ascii * powerX;
+		sum += ascii * powerX % p;
 	}
-	return sum % p % _m;
+	return sum % _m;
 }
