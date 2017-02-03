@@ -63,14 +63,14 @@ string HashChain::Check(const int& i) const {
 }
 
 int HashChain::Hash(const string& str) {
-	long long sum = 0;
+	long long hash = 0;
 	const int x = 263;
 	const int p = 1000000007;
-	for (size_t i = 0; i < str.length(); i++) {
+	for (int i = str.length() - 1; i >= 0 ; i--) {
 		int ascii = (int)str[i];
-		long long powerX = std::pow(x, i);
 
-		sum += ascii * powerX % p;
+		hash = (hash * x + ascii) % p;
 	}
-	return sum % _m;
+
+	return hash % _m;
 }
