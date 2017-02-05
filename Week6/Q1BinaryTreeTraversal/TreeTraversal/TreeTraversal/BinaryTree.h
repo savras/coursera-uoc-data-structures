@@ -9,8 +9,8 @@ class BinaryTree
 public:
 	BinaryTree(int n) : _n(n), _arr(n) {};
 	void Insert(int, int, int, int);
-	void InOrder();
-	void PostOrder();
-	void PreOrder();
+	void InOrder(int);
+	void PostOrder(int);
+	void PreOrder(int);
 };
 

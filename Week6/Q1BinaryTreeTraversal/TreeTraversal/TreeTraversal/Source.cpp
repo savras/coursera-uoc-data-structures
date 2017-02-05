@@ -3,6 +3,7 @@
 
 using std::cin;
 using std::cout;
+using std::endl;
 
 int main() {
 	int n;
@@ -15,9 +16,12 @@ int main() {
 		t.Insert(key, i, left, right);
 	}
 
-	t.PreOrder();
-	t.InOrder();
-	t.PostOrder();
+	t.InOrder(0);
+	cout << endl;
+	t.PreOrder(0);
+	cout << endl;	
+	t.PostOrder(0);
+	cout << endl;
 
 	system("pause");
 
