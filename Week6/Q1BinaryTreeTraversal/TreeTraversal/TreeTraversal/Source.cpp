@@ -20,6 +20,9 @@ int main() {
 	cout << endl;
 	t.InOrder(0);
 	cout << endl;
+
+	t.PreOrderIterative(0);
+	cout << endl;
 	t.PreOrder(0);
 	cout << endl;	
 	t.PostOrder(0);

@@ -10,16 +10,6 @@ void BinaryTree::Insert(int val,int index, int left, int right) {
 	_arr[index] = node;
 }
 
-void BinaryTree::InOrder(int index) {
-	if (index == -1) {
-		return;
-	}
-
-	InOrder(_arr[index].GetLeftChild());
-	cout << _arr[index].GetKey() << " ";
-	InOrder(_arr[index].GetRightChild());	
-}
-
 void BinaryTree::InOrderIterative(int index) {
 	vector<int> stack;
 	stack.push_back(index);
@@ -27,19 +17,69 @@ void BinaryTree::InOrderIterative(int index) {
 
 	while (stack.size() != 0) {
 		while (index != -1) {
-			stack.push_back(index);
-			index = _arr[index].GetLeftChild();
+			index = GoLeft(index, stack);
 		}
-		index = stack.back();		
-		cout << _arr[index].GetKey() << " ";
+
+		index = PrintAndGetCurrentIndex(stack);
+		index = _arr[index].GetRightChild();
+
+		if (index != -1) {
+			index = GoRight(index, stack);
+		}
+	}
+}
+
+int BinaryTree::PrintAndGetCurrentIndex(vector<int>& stack) {
+	int index = stack.back();
+	cout << _arr[index].GetKey() << " ";
+	stack.pop_back();
+	return index;
+}
+
+int BinaryTree::GoRight(const int& index, vector<int>& stack) {
+	stack.push_back(index);
+	return _arr[index].GetLeftChild();
+}
+
+int BinaryTree::GoLeft(const int& index, vector<int>& stack) {
+	stack.push_back(index);
+	return _arr[index].GetLeftChild();
+}
+
+void BinaryTree::PreOrderIterative(int index) {
+	vector<int> stack;
+	stack.push_back(index);
+	cout << _arr[index].GetKey() << " ";
+	index = _arr[index].GetLeftChild();
+
+	while (stack.size() != 0) {		
+		while (index != -1) {
+			cout << _arr[index].GetKey() << " ";
+			stack.push_back(index);
+			index =_arr[index].GetLeftChild();
+		}
+
+		index = stack.back();
 		stack.pop_back();
 
 		index = _arr[index].GetRightChild();
+
 		if (index != -1) {
+			cout << _arr[index].GetKey() << " ";
 			stack.push_back(index);
 			index = _arr[index].GetLeftChild();
 		}
 	}
+}
+
+void BinaryTree::InOrder(int index) {
+	if (index == -1) {
+		return;
+	}
+
+	InOrder(_arr[index].GetLeftChild());
+	cout << _arr[index].GetKey() << " ";
+	InOrder(_arr[index].GetRightChild());
 }
 
 void BinaryTree::PostOrder(int index) {
