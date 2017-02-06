@@ -16,6 +16,8 @@ int main() {
 		t.Insert(key, i, left, right);
 	}
 
+	t.InOrderIterative(0);
+	cout << endl;
 	t.InOrder(0);
 	cout << endl;
 	t.PreOrder(0);
