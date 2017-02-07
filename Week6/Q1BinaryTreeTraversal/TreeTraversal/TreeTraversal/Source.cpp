@@ -24,6 +24,9 @@ int main() {
 	t.PreOrderIterative(0);
 	cout << endl;
 	t.PreOrder(0);
+	cout << endl;
+
+	//t.PostOrderIterative(0);
 	cout << endl;	
 	t.PostOrder(0);
 	cout << endl;

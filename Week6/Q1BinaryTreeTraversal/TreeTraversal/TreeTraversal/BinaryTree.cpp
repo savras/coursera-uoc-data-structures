@@ -47,14 +47,13 @@ int BinaryTree::GoLeft(const int& index, vector<int>& stack) {
 }
 
 void BinaryTree::PreOrderIterative(int index) {
-	vector<int> stack;
-	stack.push_back(index);
-	cout << _arr[index].GetKey() << " ";
-	index = _arr[index].GetLeftChild();
+	vector<int> stack;	
 
-	while (stack.size() != 0) {		
+	int counter = 0;
+	do {
 		while (index != -1) {
 			cout << _arr[index].GetKey() << " ";
+			counter++;
 			stack.push_back(index);
 			index =_arr[index].GetLeftChild();
 		}
@@ -63,12 +62,28 @@ void BinaryTree::PreOrderIterative(int index) {
 		stack.pop_back();
 
 		index = _arr[index].GetRightChild();
+	} while (counter < _n);
+}
 
-		if (index != -1) {
-			cout << _arr[index].GetKey() << " ";
+void BinaryTree::PostOrderIterative(int index) {
+	vector<int> stack;
+	stack.push_back(index);
+	index = _arr[index].GetLeftChild();
+
+	while (stack.size() != 0) {
+		while (index != -1) {
 			stack.push_back(index);
 			index = _arr[index].GetLeftChild();
 		}
+
+		index = _arr[stack.back()].GetRightChild();
+		if (index == -1) {
+			cout << _arr[stack.back()].GetKey() << " ";
+			stack.pop_back();
+			index = stack.back(); 
+			stack.push_back(index);
+			index = _arr[index].GetLeftChild();
+		}		
 	}
 }
 
