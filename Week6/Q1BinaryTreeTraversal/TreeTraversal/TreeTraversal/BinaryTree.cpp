@@ -12,39 +12,23 @@ void BinaryTree::Insert(int val,int index, int left, int right) {
 
 void BinaryTree::InOrderIterative(int index) {
 	vector<int> stack;
-	stack.push_back(index);
-	index = _arr[index].GetLeftChild();
-
-	while (stack.size() != 0) {
+	
+	int counter = 0;
+	do {
 		while (index != -1) {
-			index = GoLeft(index, stack);
+			stack.push_back(index);
+			index =_arr[index].GetLeftChild();
 		}
 
-		index = PrintAndGetCurrentIndex(stack);
-		index = _arr[index].GetRightChild();
+		index = stack.back();
+		cout << _arr[index].GetKey() << " ";
+		counter++;
+		stack.pop_back();
 
-		if (index != -1) {
-			index = GoRight(index, stack);
-		}
-	}
+		index = _arr[index].GetRightChild();		
+	} while (counter < _n);
 }
 
-int BinaryTree::PrintAndGetCurrentIndex(vector<int>& stack) {
-	int index = stack.back();
-	cout << _arr[index].GetKey() << " ";
-	stack.pop_back();
-	return index;
-}
-
-int BinaryTree::GoRight(const int& index, vector<int>& stack) {
-	stack.push_back(index);
-	return _arr[index].GetLeftChild();
-}
-
-int BinaryTree::GoLeft(const int& index, vector<int>& stack) {
-	stack.push_back(index);
-	return _arr[index].GetLeftChild();
-}
 
 void BinaryTree::PreOrderIterative(int index) {
 	vector<int> stack;	
