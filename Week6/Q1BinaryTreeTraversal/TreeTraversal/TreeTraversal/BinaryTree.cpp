@@ -49,25 +49,30 @@ void BinaryTree::PreOrderIterative(int index) {
 	} while (counter < _n);
 }
 
+// Using 2 stacks
 void BinaryTree::PostOrderIterative(int index) {
-	vector<int> stack;
-	stack.push_back(index);
-	index = _arr[index].GetLeftChild();
+	vector<int> stack1;
+	vector<int> stack2;
 
-	while (stack.size() != 0) {
-		while (index != -1) {
-			stack.push_back(index);
-			index = _arr[index].GetLeftChild();
+	stack1.push_back(index);
+	while (!stack1.empty()) {
+		int i = stack1.back();
+		stack1.pop_back();
+		stack2.push_back(i);		
+
+		if (_arr[i].GetLeftChild() != -1)
+		{
+			stack1.push_back(_arr[i].GetLeftChild());
 		}
 
-		index = _arr[stack.back()].GetRightChild();
-		if (index == -1) {
-			cout << _arr[stack.back()].GetKey() << " ";
-			stack.pop_back();
-			index = stack.back(); 
-			stack.push_back(index);
-			index = _arr[index].GetLeftChild();
-		}		
+		if (_arr[i].GetRightChild() != -1)
+		{
+			stack1.push_back(_arr[i].GetRightChild());
+		}
+	}
+
+	for (int i = stack2.size() - 1; i >= 0; i--) {
+		cout << _arr[stack2[i]].GetKey() << " ";
 	}
 }
 

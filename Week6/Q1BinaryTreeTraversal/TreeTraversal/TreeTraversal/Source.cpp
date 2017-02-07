@@ -26,7 +26,7 @@ int main() {
 	t.PreOrder(0);
 	cout << endl;
 
-	//t.PostOrderIterative(0);
+	t.PostOrderIterative(0);
 	cout << endl;	
 	t.PostOrder(0);
 	cout << endl;
