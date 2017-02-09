@@ -8,6 +8,8 @@ int SplayTree::GetSize() {
 
 int SplayTree::Hash(const long long& i) const {
 	const long long x = 1000000001;
+
+	return 0;
 }
 
 void SplayTree::Add(const long long&) const {
@@ -26,13 +28,13 @@ void SplayTree::Splay(const int& current) {
 	int index = 0; // Find(current);
 	SplayMod mod = GetSplayModification(index);
 	switch (mod) {
-	case SplayMod.ZigZag: {
+	case ZigZag: {
 			break;
 		}
-	case SplayMod.ZigZig:{
+	case ZigZig:{
 			break;
 		}
-	case SplayMod.Zig:{
+	case Zig:{
 			break;
 		}
 	}
@@ -51,6 +53,8 @@ SplayMod SplayTree::GetSplayModification(const int& index) const {
 	//	  (parentPosition.Right && grandParentPosition.Left))
 	//	  return SplayMod.ZigZag;
 	// return SplayMod.ZigZig;
+
+	return Zig;
 }
 
 int SplayTree::GoLeft(const int& current) const {
