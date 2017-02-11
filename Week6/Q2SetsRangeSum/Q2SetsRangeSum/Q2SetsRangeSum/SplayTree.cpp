@@ -7,9 +7,9 @@ int SplayTree::GetSize() {
 }
 
 int SplayTree::Hash(const long long& i) const {
-	const long long x = 1000000001;
-
-	return 0;
+	const long long M = 1000000001;
+	int index = (i + _sum) % M;
+	return index;
 }
 
 void SplayTree::Add(const long long&) const {

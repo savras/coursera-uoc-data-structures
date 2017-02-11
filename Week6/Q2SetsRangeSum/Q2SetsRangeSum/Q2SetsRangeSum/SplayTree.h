@@ -6,6 +6,7 @@
 class SplayTree
 {
 	std::vector<Node> _arr;
+	long long _sum;
 	void Splay(const int&);
 	int GetSize();
 	int GoLeft(const int&) const;
@@ -13,6 +14,7 @@ class SplayTree
 	int Hash(const long long&) const;
 	SplayMod GetSplayModification(const int&) const;
 public:	
+	SplayTree() : _sum(0) {};
 	void Add(const long long&) const;
 	void Find(const long long&) const;
 	void Del(const long long&) const;
