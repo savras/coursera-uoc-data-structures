@@ -168,7 +168,21 @@ void erase(int x) {
 }
 
 bool find(int x) {
-	// Implement find yourself
+	if (root == NULL) {
+		return false;
+	}
+
+	Vertex* current = root;	
+	while (current != NULL) {
+		if(current->key == x) { 
+			return true;
+		}
+		if (current->key > x) {
+			current = current->left;
+		} else {
+			current = current->right;
+		}
+	}
 
 	return false;
 }
