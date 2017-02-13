@@ -1,4 +1,7 @@
 #include <cstdio>
+#include <iostream>
+
+using std::cin;
 
 // Splay tree implementation
 
@@ -163,22 +166,22 @@ void insert(int x) {
 }
 
 void erase(int x) {
+	if (root == NULL) { return;	}
+
 	Vertex* v = find(root, x);
 	if (v == NULL || v->key != x) { return; }	// Key not found.
-
-	Vertex* successor = v->parent;
-	splay(root, successor);
-	splay(root, v);
 
 	Vertex* left = NULL;
 	Vertex* right = NULL;
 	split(root, x, left, right);
 
-	// Key to erase is always the root of the right tree
-	right = right->right;
-	right->parent = NULL;
-	
-	merge(left, right);
+	Vertex* successor = right->right;
+	if (successor != NULL) {
+		root = successor;
+		successor->parent = NULL;
+	}
+
+	root = merge(left, successor);
 }
 
 bool find(int x) {
@@ -187,7 +190,7 @@ bool find(int x) {
 	}
 
 	Vertex* result = find(root, x);
-	if (result->key == x) {
+	if (result != NULL && result->key == x) {
 		return true;
 	}
 	return false;
@@ -201,8 +204,14 @@ long long sum(int from, int to) {
 	split(middle, to + 1, middle, right);	// Inclusive
 	long long ans = 0;	
 
-	ans += left->sum;
-	ans += right->sum;
+	if (middle != NULL) {
+		ans += middle->sum;
+	}
+
+	if (right != NULL)
+	{
+		ans += right->sum;
+	}	
 
 	return ans;
 }
@@ -242,5 +251,6 @@ int main() {
 		}
 		}
 	}
+
 	return 0;
 }
