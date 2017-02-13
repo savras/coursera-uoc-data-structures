@@ -203,16 +203,17 @@ long long sum(int from, int to) {
 	split(root, from, left, middle);
 	split(middle, to + 1, middle, right);	// Inclusive
 	long long ans = 0;	
-
+	
 	if (middle != NULL) {
 		ans += middle->sum;
 	}
 
-	if (right != NULL)
+	if (left != NULL)
 	{
-		ans += right->sum;
+		ans += left->sum;
 	}	
 
+	merge(merge(left, middle), right);
 	return ans;
 }
 
@@ -227,28 +228,28 @@ int main() {
 		scanf("%s", buffer);
 		char type = buffer[0];
 		switch (type) {
-		case '+': {
-			int x;
-			scanf("%d", &x);
-			insert((x + last_sum_result) % MODULO);
-		} break;
-		case '-': {
-			int x;
-			scanf("%d", &x);
-			erase((x + last_sum_result) % MODULO);
-		} break;
-		case '?': {
-			int x;
-			scanf("%d", &x);
-			printf(find((x + last_sum_result) % MODULO) ? "Found\n" : "Not found\n");
-		} break;
-		case 's': {
-			int l, r;
-			scanf("%d %d", &l, &r);
-			long long res = sum((l + last_sum_result) % MODULO, (r + last_sum_result) % MODULO);
-			printf("%lld\n", res);
-			last_sum_result = int(res % MODULO);
-		}
+			case '+': {
+				int x;
+				scanf("%d", &x);
+				insert((x + last_sum_result) % MODULO);
+			} break;
+			case '-': {
+				int x;
+				scanf("%d", &x);
+				erase((x + last_sum_result) % MODULO);
+			} break;
+			case '?': {
+				int x;
+				scanf("%d", &x);
+				printf(find((x + last_sum_result) % MODULO) ? "Found\n" : "Not found\n");
+			} break;
+			case 's': {
+				int l, r;
+				scanf("%d %d", &l, &r);
+				long long res = sum((l + last_sum_result) % MODULO, (r + last_sum_result) % MODULO);
+				printf("%lld\n", res);
+				last_sum_result = int(res % MODULO);
+			}
 		}
 	}
 
