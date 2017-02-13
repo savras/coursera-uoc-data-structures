@@ -163,8 +163,22 @@ void insert(int x) {
 }
 
 void erase(int x) {
-	// Implement erase yourself
+	Vertex* v = find(root, x);
+	if (v == NULL || v->key != x) { return; }	// Key not found.
 
+	Vertex* successor = v->parent;
+	splay(root, successor);
+	splay(root, v);
+
+	Vertex* left = NULL;
+	Vertex* right = NULL;
+	split(root, x, left, right);
+
+	// Key to erase is always the root of the right tree
+	right = right->right;
+	right->parent = NULL;
+	
+	merge(left, right);
 }
 
 bool find(int x) {
@@ -172,18 +186,10 @@ bool find(int x) {
 		return false;
 	}
 
-	Vertex* current = root;	
-	while (current != NULL) {
-		if(current->key == x) { 
-			return true;
-		}
-		if (current->key > x) {
-			current = current->left;
-		} else {
-			current = current->right;
-		}
+	Vertex* result = find(root, x);
+	if (result->key == x) {
+		return true;
 	}
-
 	return false;
 }
 
@@ -192,7 +198,7 @@ long long sum(int from, int to) {
 	Vertex* middle = NULL;
 	Vertex* right = NULL;
 	split(root, from, left, middle);
-	split(middle, to + 1, middle, right);
+	split(middle, to + 1, middle, right);	// Inclusive
 	long long ans = 0;
 	// Complete the implementation of sum
 
