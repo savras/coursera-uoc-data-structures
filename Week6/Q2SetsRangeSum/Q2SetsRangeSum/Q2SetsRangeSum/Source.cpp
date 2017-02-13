@@ -199,8 +199,10 @@ long long sum(int from, int to) {
 	Vertex* right = NULL;
 	split(root, from, left, middle);
 	split(middle, to + 1, middle, right);	// Inclusive
-	long long ans = 0;
-	// Complete the implementation of sum
+	long long ans = 0;	
+
+	ans += left->sum;
+	ans += right->sum;
 
 	return ans;
 }
