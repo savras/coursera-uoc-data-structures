@@ -98,7 +98,7 @@ void splay(Vertex*& root, Vertex* v) {
 // bigger key (next value in the order).
 // If the key is bigger than all keys in the tree, 
 // returns NULL.
-Vertex* find(Vertex*& root, int key) {
+Vertex* find (Vertex*& root, int key) {
 	Vertex* v = root;
 	Vertex* last = root;
 	Vertex* next = NULL;
@@ -204,14 +204,11 @@ long long sum(int from, int to) {
 	split(middle, to + 1, middle, right);	// Inclusive
 	long long ans = 0;	
 	
-	if (middle != NULL) {
-		ans += middle->sum;
+	if (right == NULL && middle != NULL) {
+		ans = middle->sum;
+	} else if (middle != NULL && middle->left != NULL) {
+		ans = middle->left->sum;
 	}
-
-	if (left != NULL)
-	{
-		ans += left->sum;
-	}	
 
 	merge(merge(left, middle), right);
 	return ans;
