@@ -104,7 +104,10 @@ Vertex* find (Vertex*& root, int key) {
 	Vertex* next = NULL;
 	while (v != NULL) {
 		if (v->key >= key && (next == NULL || v->key < next->key)) {
-			next = v;
+			// The next value in the tree that is larger than key.
+			// Or in other words, in a sorted list, and grab the next value after key.
+			next = v;	
+						
 		}
 		last = v;
 		if (v->key == key) {
@@ -175,13 +178,16 @@ void erase(int x) {
 	Vertex* right = NULL;
 	split(root, x, left, right);
 
-	Vertex* successor = right->right;
-	if (successor != NULL) {
-		root = successor;
-		successor->parent = NULL;
+	right = right->right;
+	
+	if (right != NULL) {
+		root = right;
+		right->parent = NULL;
 	}
 
-	root = merge(left, successor);
+	find(left, x);	// Splay the largest key in the left node.
+
+	root = merge(left, right);
 }
 
 bool find(int x) {
@@ -204,12 +210,25 @@ long long sum(int from, int to) {
 	split(middle, to + 1, middle, right);	// Inclusive
 	long long ans = 0;	
 	
-	if (right == NULL && middle != NULL) {
-		ans = middle->sum;
-	} else if (middle != NULL && middle->left != NULL) {
-		ans = middle->left->sum;
-	}
+	if (middle != NULL) {
+		long long leftSum = 0L;
+		long long rightSum = 0L; 
+		
+		if (middle->left != NULL) {
+			leftSum = middle->left->sum;
+		}
+		
+		if (middle->right != NULL) {
+			rightSum = middle->right->sum;
+		}
 
+		if (middle->key <= to) {
+			ans = middle->sum - rightSum;
+		}
+		else {
+			ans = leftSum;
+		}
+	}
 	merge(merge(left, middle), right);
 	return ans;
 }
