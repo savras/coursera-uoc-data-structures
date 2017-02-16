@@ -171,21 +171,13 @@ void insert(int x) {
 void erase(int x) {
 	if (root == NULL) { return;	}
 
-	Vertex* v = find(root, x);
-	if (v == NULL || v->key != x) { return; }	// Key not found.
-
 	Vertex* left = NULL;
 	Vertex* right = NULL;
 	split(root, x, left, right);
 
-	right = right->right;
-	
-	if (right != NULL) {
-		root = right;
-		right->parent = NULL;
-	}
-
-	find(left, x);	// Splay the largest key in the left node.
+	if (right != NULL && right->key == x) {
+		right = right->right;
+	};
 
 	root = merge(left, right);
 }
@@ -229,7 +221,7 @@ long long sum(int from, int to) {
 			ans = leftSum;
 		}
 	}
-	merge(merge(left, middle), right);
+	root = merge(merge(left, middle), right);
 	return ans;
 }
 
