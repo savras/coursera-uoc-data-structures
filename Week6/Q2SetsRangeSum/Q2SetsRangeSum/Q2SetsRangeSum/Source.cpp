@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <iostream>
 
+using namespace std;
 using std::cin;
 
 // Splay tree implementation
@@ -256,3 +257,4 @@ int main() {
 
 	return 0;
 }
+
