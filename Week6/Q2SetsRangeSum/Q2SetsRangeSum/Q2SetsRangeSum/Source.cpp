@@ -176,8 +176,12 @@ void erase(int x) {
 	split(root, x, left, right);
 
 	if (right != NULL && right->key == x) {
-		right = right->right;
+		right = right->right;		
 	};
+
+	if (right != NULL) {
+		right->parent = NULL;
+	}
 
 	root = merge(left, right);
 }
@@ -201,26 +205,15 @@ long long sum(int from, int to) {
 	split(root, from, left, middle);
 	split(middle, to + 1, middle, right);	// Inclusive
 	long long ans = 0;	
-	
-	if (middle != NULL) {
-		long long leftSum = 0L;
-		long long rightSum = 0L; 
-		
-		if (middle->left != NULL) {
-			leftSum = middle->left->sum;
-		}
-		
-		if (middle->right != NULL) {
-			rightSum = middle->right->sum;
-		}
 
-		if (middle->key <= to) {
-			ans = middle->sum - rightSum;
-		}
-		else {
-			ans = leftSum;
-		}
+	if (right != NULL && right->key == to + 1) {
+		ans += right->key;
 	}
+
+	if (middle != NULL) {
+		ans += middle->sum;
+	}
+
 	root = merge(merge(left, middle), right);
 	return ans;
 }
